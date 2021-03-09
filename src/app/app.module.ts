@@ -8,6 +8,7 @@ import { FooterComponent } from './pages/includes/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { BookShipmentComponent } from './pages/book-shipment/book-shipment.component';
 import { BookCollectionComponent } from './pages/book-collection/book-collection.component';
+import { ServiceDetailsComponent } from './pages/service-details/service-details.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { BookCollectionComponent } from './pages/book-collection/book-collection
     FooterComponent,
     HomeComponent,
     BookShipmentComponent,
-    BookCollectionComponent
+    BookCollectionComponent,
+    ServiceDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -1655,7 +1655,7 @@ body {
   }
   
   #footer .footer-top {
-    background: red;
+    background: #444444;
     border-top: 1px solid #37332a;
     border-bottom: 1px solid #28251f;
     padding: 60px 0 30px 0;
@@ -1828,6 +1828,34 @@ body {
         }
     }
   }
+  .carousel-item {
+    position: relative;
+  }
+  .sliderContent{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left:0px;
+    bottom: 0px;
+    background-color: rgba(0,0,0,0.85);
+    padding: 170px 20px;
+    color: #ffffff;
+    .btns {
+      a {
+        border: 1px solid #f5ab35;
+        border-radius: 50px;
+        padding: 10px 20px;
+        margin-top: 20px;
+        display: inline-block;
+      }
+    }
+  }
+  #main {
+    margin-top: -200px;
+  }
+  .contentSpace {
+    margin-top: 110px;
+  }
   .home-car-div{
       text-align: center;
       ul{
@@ -1840,6 +1868,7 @@ body {
         li{
             font-weight: bold;
             position: relative;
+            color: #f5ab35;
         }
           li+li{
               padding-left: 30px;

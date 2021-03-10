@@ -2335,7 +2335,7 @@ span.round-tab i{
     font-style: normal;
     font-weight: 400;
     white-space: nowrap;
-    left: 50%;
+    left: calc(50% + 15px);
     transform: translate(-50%, -50%);
     font-size: 12px;
     font-weight: 700;

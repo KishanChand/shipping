@@ -1649,7 +1649,36 @@ body {
       transform: rotate(360deg);
     }
   }
-  
+
+  .rateMainSec {
+    background-color: #f74c4c;
+    h3, label {
+      color: #ffffff;
+    }
+  }
+  .rateSection {
+    .custom-control-label {
+      width: 100%;
+      padding: 10px 10px 10px 40px;
+      margin-bottom: 10px;
+      border-radius: 3px;
+      border: 1px solid #ddd;
+      &::before, &::after {
+        top: 14px;
+        left: 15px;
+      }
+    }
+    .custom-control-input:checked~.custom-control-label::before {
+      background-color: #f5ab35;
+      border: 2px solid #fff;
+      box-shadow: none;
+    }
+    .custom-control-input:checked~.custom-control-label {
+        background-color: #f5ab35;
+        border: 1px solid #f5ab35;
+    }
+  }
+
   /*--------------------------------------------------------------
   # Footer
   --------------------------------------------------------------*/

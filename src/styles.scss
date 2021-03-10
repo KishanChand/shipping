@@ -720,7 +720,7 @@ body {
     margin: 0;
     font-size: 36px;
     font-weight: 700;
-    font-family: "Playfair Display", serif;
+    // font-family: "Playfair Display", serif;
     color: #f5ab35;
   }
   
@@ -941,7 +941,7 @@ body {
     margin-bottom: 10px;
     transition: all ease-in-out 0.3s;
     border-radius: 50px;
-    font-family: "Playfair Display", serif;
+    // font-family: "Playfair Display", serif;
   }
   
   .menu #menu-flters li:hover, .menu #menu-flters li.filter-active {
@@ -1194,7 +1194,7 @@ body {
   
   .book-a-table .php-email-form .validate {
     display: none;
-    color: red;
+    color: #f74c4c;
     margin: 0 0 15px 0;
     font-weight: 400;
     font-size: 13px;
@@ -1529,7 +1529,7 @@ body {
   
   .contact .php-email-form .validate {
     display: none;
-    color: red;
+    color: #f74c4c;
     margin: 0 0 15px 0;
     font-weight: 400;
     font-size: 13px;
@@ -1655,7 +1655,7 @@ body {
   }
   
   #footer .footer-top {
-    background: #444444;
+    background: #333333;
     border-top: 1px solid #37332a;
     border-bottom: 1px solid #28251f;
     padding: 60px 0 30px 0;
@@ -1679,11 +1679,11 @@ body {
     font-size: 14px;
     line-height: 24px;
     margin-bottom: 0;
-    font-family: "Playfair Display", serif;
-    color: #fff;
+    // font-family: "Playfair Display", serif;
+    color: #999;
   }
   
-  #footer .footer-top .social-links a {
+  #footer .footer-top .social-links a, .footer-links strong {
     font-size: 18px;
     display: inline-block;
     background: #28251f;
@@ -1696,6 +1696,13 @@ body {
     width: 36px;
     height: 36px;
     transition: 0.3s;
+  }
+
+  .footer-links strong {
+    font-size: 8px;
+    height: 24px;
+    width: 24px;
+    margin-bottom: 5px;
   }
   
   #footer .footer-top .social-links a:hover {
@@ -1714,6 +1721,9 @@ body {
   
   #footer .footer-top .footer-links {
     margin-bottom: 30px;
+    p {
+      color: #999;
+    }
   }
   
   #footer .footer-top .footer-links ul {
@@ -1919,7 +1929,7 @@ body {
 
   .track-card{
     padding: 25px;
-    background-color: red;
+    background-color: #f74c4c;
     color: #fff;
     // border-radius: ;
     height: 100%;
@@ -1946,7 +1956,7 @@ body {
     }
    .track-btn{
     margin-top: 20px;
-    background-color: red;
+    background-color: #f74c4c;
     color: #fff;
     border: 1px solid #fff;
     padding: 5px 40px;
@@ -1964,11 +1974,11 @@ body {
     }
   }
   .check-rate-btn{
-    background-color: red;
+    background-color: #f74c4c;
     color: #fff;
     text-transform: uppercase;
     padding: 5px 40px;
-    border: 1px solid red;
+    border: 1px solid #f74c4c;
     font-size: 14px;
   }
 
@@ -1982,7 +1992,7 @@ body {
       font-weight: bold;
       text-transform: uppercase;
       span{
-      color: red;
+      color: #f74c4c;
       font-size: 17px;
       }
     }
@@ -2046,7 +2056,7 @@ body {
   .section-title{
     text-align: center;
     p{
-      color: red;
+      color: #f74c4c;
       font-family: inherit;
     }
   }
@@ -2065,7 +2075,7 @@ body {
       align-items: center;
     }
     .title{
-      color: red;
+      color: #f74c4c;
       font-size: 18px;
       font-weight: bold;
     }
@@ -2075,7 +2085,7 @@ body {
     }
   }
   .slick-prev:before, .slick-next:before{
-    color:red;
+    color: #f74c4c;
 }
 .slick-prev {
   left: 6px;
@@ -2105,7 +2115,7 @@ body {
     transform: rotate(-90deg);
 } 
 .title-with-bg{
-  background-color: red;
+  background-color: #f74c4c;
   padding: 5px;
   text-transform: uppercase;
   color: #ffff;
@@ -2154,18 +2164,18 @@ width: 100%;
   border-bottom: 1px solid #5c5c5c;
 }
 .required-star{
-  color: red;
+  color: #f74c4c;
 }
 .required::after{
   content: "*";
-  color: red;
+  color: #f74c4c;
   margin-left: 3px;
 }
 
 .add-item-btn{
   font-size: 12px;
     border: none;
-    background-color: red;
+    background-color: #f74c4c;
     color: #fff;
     padding: 5px;
 }
@@ -2268,7 +2278,7 @@ span.round-tab i{
     margin: 0 auto;
     bottom: 0px;
     border: 5px solid transparent;
-    border-bottom-color: red;
+    border-bottom-color: #f74c4c;
     transition: 0.1s ease-in-out;
 }
 

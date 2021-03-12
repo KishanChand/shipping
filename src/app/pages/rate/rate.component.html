@@ -4,48 +4,90 @@
             <div class="col-sm-7">
                 <div class="rateMainSec p-5">
                     <h3>Rate Inquiry</h3>
-                    <div class="row">
+                    <form [formGroup]="rateCalc" (ngSubmit)="rateCalculator()" class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="exampleFormControlSelect1">From Country</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                  <option>1</option>
-                                  <option>2</option>
-                                  <option>3</option>
-                                  <option>4</option>
-                                  <option>5</option>
+                                <label for="exampleFormControlSelect1">From Country <span>*</span></label>
+                                <select class="form-control" formControlName="fromCountry" name="fromCountry">
+                                  <option value="">Select Country</option>
+                                  <option value="india">india</option>
+                                  <option value="australia">australia</option>
+                                  <option value="america">america</option>
+                                  <option value="london">london</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="exampleFormControlSelect1">To Country</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                  <option>1</option>
-                                  <option>2</option>
-                                  <option>3</option>
-                                  <option>4</option>
-                                  <option>5</option>
+                                <label for="exampleFormControlSelect1">To Country<span>*</span></label>
+                                <select class="form-control" formControlName="toCountry" name="toCountry">
+                                  <option value="">Select Country</option>
+                                  <option value="india">india</option>
+                                  <option value="australia">australia</option>
+                                  <option value="america">america</option>
+                                  <option value="london">london</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="">
+                                <label for="exampleFormControlSelect1">From City<span>*</span></label>
+                                <select class="form-control" formControlName="fromCity" name="fromCity">
+                                  <option value="">Select City</option>
+                                  <option value="madurai">Madurai</option>
+                                  <option value="chennai">Chennai</option>
+                                  <option value="delhi">Delhi</option>
+                                  <option value="mumbai">Mumbai</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                <label class="btn btn-secondary active">
-                                  <input type="radio" name="options" id="option1" checked> KG
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">To City<span>*</span></label>
+                                <select class="form-control" formControlName="toCity" name="toCity">
+                                    <option value="">Select City</option>
+                                    <option value="melborne">Melborne</option>
+                                    <option value="sydney">Sydney</option>
+                                    <option value="delhi">Delhi</option>
+                                    <option value="mumbai">Mumbai</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Weight<span>*</span></label>
+                                <input type="text" class="form-control" placeholder="" formControlName="weight" name="weight">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="col-12">
+                                <label for="exampleFormControlSelect1">&nbsp;</label>
+                            </div>
+                            <!-- <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-secondary">
+                                <input type="radio" name="unit" formControlName="unit" value="KG"> KG
                                 </label>
                                 <label class="btn btn-secondary">
-                                  <input type="radio" name="options" id="option2"> LBS
+                                <input type="radio" name="unit" formControlName="unit" value="LBS"> LBS
                                 </label>
+                            </div> -->
+                            <div class="form-inline">
+                                <div class="form-check mr-3">
+                                    <input class="form-check-input" type="radio" name="unit" formControlName="unit" id="exampleRadios1" value="KG">
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        KG
+                                    </label>
+                                </div>
+                                <div class="form-check mr-3">
+                                    <input class="form-check-input" type="radio" name="unit" formControlName="unit" id="exampleRadios2" value="LBS">
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        LBS
+                                    </label>
+                                </div>
+                                <button class="btn btn-warning ml-2">Check Rate</button>
                             </div>
-                            <button class="btn btn-warning ml-2">Check Rate</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="rateSection white-bg shadow p-5">
                     <div class="row">

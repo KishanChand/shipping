@@ -66,7 +66,7 @@
       <div class="container-fluid" data-aos="fade-up">
         <div class="row">
           <div class="col-md-4">
-            <div class="track-card shadow" data-aos="zoom-in" data-aos-delay="100">
+            <div class="track-card shadow">
               <h1 class="card-title">TRACK YOUR SHIPMENT</h1>
               <form>
               <div class="radio-btns-div">
@@ -89,7 +89,7 @@
             </div>
           </div>
           <div class="col-md-4">
-            <div class="inquiry-card shadow" data-aos="zoom-in" data-aos-delay="100">
+            <div class="inquiry-card shadow">
               <h1 class="card-title">RATE INQUIRY</h1>
               <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item">
@@ -101,37 +101,51 @@
               </ul><!-- Tab panes -->
               <div class="tab-content">
                 <div class="tab-pane active" id="domastic-tab" role="tabpanel">
-              <form>
-              <div class="form-group">
-                <label>From <span>*</span></label>
-                <input type="text" class="form-control">
-              </div>
-              <div class="form-group">
-                <label>To <span>*</span></label>
-                <input type="text" class="form-control">
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label>Weight <span>*</span></label>
-                    <input type="text" class="form-control">
+              <form [formGroup]="domesticForm" (ngSubmit)="ratingDetails()">
+                <div class="form-group">
+                  <label>From Country <span>*</span></label>
+                  <input type="text" class="form-control" name="fromCountry" formControlName="fromCountry">
+                </div>
+                <div class="form-group">
+                  <label>To Country <span>*</span></label>
+                  <input type="text" name="toCountry" class="form-control" formControlName="toCountry">
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>From City <span>*</span></label>
+                      <input type="text" class="form-control" name="fromCity" formControlName="fromCity">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>To City <span>*</span></label>
+                      <input type="text" name="toCity" class="form-control" formControlName="toCity">
+                    </div>
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label>Unit <span>*</span></label>
-                    <select class="form-control">
-                      <option value="">select</option>
-                      <option value="">Kg</option>
-                    </select>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Weight <span>*</span></label>
+                      <input type="text" class="form-control" formControlName="weight" name="weight">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Unit <span>*</span></label>
+                      <select class="form-control" formControlName="unit" name="unit">
+                        <option value="">select</option>
+                        <option value="KG">KG</option>
+                        <option value="LBS">LBS</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="text-center mt-2">
-                <button type="submit" class="check-rate-btn" routerLink="rate">CHECK RATES</button>
-              </div>
-              
-            </form>
+                <div class="text-center mt-2">
+                  <button type="submit" class="check-rate-btn">CHECK RATES</button>
+                </div>
+              </form>
                 </div>
                 <div class="tab-pane" id="internation-tab" role="tabpanel">
                   <p>Second Panel</p>
@@ -142,7 +156,7 @@
             </div>
           </div>
           <div class="col-md-4">
-            <div class="map-card shadow" data-aos="zoom-in" data-aos-delay="100">
+            <div class="map-card shadow">
               <h1 class="card-title">FIND ARAMEX IN <span>United Arab Emirates</span></h1>
               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3722357.3332588463!2d51.71127771069614!3d24.342500942557642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e48dfb1ab12bd%3A0x33d32f56c0080aa7!2sUnited%20Arab%20Emirates!5e0!3m2!1sen!2sin!4v1612451003742!5m2!1sen!2sin" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
               <div class="text-center mt-2">
@@ -163,7 +177,7 @@
         </div>
       </div>
 
-      <div class="container-fluid aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+      <div class="container-fluid aos-init aos-animate" data-aos="fade-up">
 
         <div class="row no-gutters">
 
@@ -194,7 +208,7 @@
 
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item text-center text-card white-bg">
-              <img src="assets/img/ship.svg" alt="" class="icon">
+              <img src="assets/img/container-truck.svg" alt="" class="icon">
               <h1 class="service-title">Sea Freight</h1>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
               <a href="" routerLink="service-details">READ MORE</a>
@@ -249,7 +263,7 @@
           <p>About Us</p>
         </div>
       </div>
-      <div class="container-fluid aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+      <div class="container-fluid aos-init aos-animate" data-aos="fade-up">
         <div class="row no-gutters">
           <div class="col-md-6">
             <div class="video-div">

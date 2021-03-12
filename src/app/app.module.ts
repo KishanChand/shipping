@@ -10,6 +10,7 @@ import { BookShipmentComponent } from './pages/book-shipment/book-shipment.compo
 import { BookCollectionComponent } from './pages/book-collection/book-collection.component';
 import { ServiceDetailsComponent } from './pages/service-details/service-details.component';
 import { RateComponent } from './pages/rate/rate.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,8 @@ import { RateComponent } from './pages/rate/rate.component';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],

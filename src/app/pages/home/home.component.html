@@ -148,7 +148,51 @@
               </form>
                 </div>
                 <div class="tab-pane" id="internation-tab" role="tabpanel">
-                  <p>Second Panel</p>
+                  <form [formGroup]="domesticForm" (ngSubmit)="ratingDetails()">
+                    <div class="form-group">
+                      <label>From Country <span>*</span></label>
+                      <input type="text" class="form-control" name="fromCountry" formControlName="fromCountry">
+                    </div>
+                    <div class="form-group">
+                      <label>To Country <span>*</span></label>
+                      <input type="text" name="toCountry" class="form-control" formControlName="toCountry">
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>From City <span>*</span></label>
+                          <input type="text" class="form-control" name="fromCity" formControlName="fromCity">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>To City <span>*</span></label>
+                          <input type="text" name="toCity" class="form-control" formControlName="toCity">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Weight <span>*</span></label>
+                          <input type="text" class="form-control" formControlName="weight" name="weight">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Unit <span>*</span></label>
+                          <select class="form-control" formControlName="unit" name="unit">
+                            <option value="">select</option>
+                            <option value="KG">KG</option>
+                            <option value="LBS">LBS</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="text-center mt-2">
+                      <button type="submit" class="check-rate-btn">CHECK RATES</button>
+                    </div>
+                  </form>
                 </div>
                
               </div>

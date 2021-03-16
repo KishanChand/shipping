@@ -11,6 +11,10 @@ import { BookCollectionComponent } from './pages/book-collection/book-collection
 import { ServiceDetailsComponent } from './pages/service-details/service-details.component';
 import { RateComponent } from './pages/rate/rate.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule }  from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatStepperModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

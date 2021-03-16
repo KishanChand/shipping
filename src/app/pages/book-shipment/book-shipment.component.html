@@ -311,6 +311,65 @@
                         </form>
                     </div>
                 </div>
+
+                <div class="col-12">
+                      <div class="title-with-bg">BOOK A SHIPMENT</div>
+                      <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                        <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+                            {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+                          </button>
+                        <mat-step [stepControl]="firstFormGroup">
+                          <form [formGroup]="firstFormGroup">
+                            <ng-template matStepLabel>Fill out your name</ng-template>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h1 class="col-title">Sender</h1>
+                                    <mat-form-field>
+                                        <mat-label>Date</mat-label>
+                                        <input matInput placeholder="" formControlName="dateCtrl" required>
+                                    </mat-form-field>
+                                    <mat-form-field>
+                                        <mat-label>Consignor</mat-label>
+                                        <input matInput placeholder="" formControlName="consignorCtrl" required>
+                                    </mat-form-field>
+                                    <mat-form-field>
+                                        <mat-label>Contact Person</mat-label>
+                                        <input matInput placeholder="" formControlName="contactPersonCtrl" required>
+                                    </mat-form-field>
+                                    <mat-form-field>
+                                        <mat-label>Street Name/Number</mat-label>
+                                        <textarea matInput placeholder="SNCtrl"></textarea>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div>
+                              <button mat-button matStepperNext>Next</button>
+                            </div>
+                          </form>
+                        </mat-step>
+                        <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
+                          <form [formGroup]="secondFormGroup">
+                            <mat-form-field>
+                              <mat-label>Address</mat-label>
+                              <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                                     required>
+                            </mat-form-field>
+                            <div>
+                              <button mat-button matStepperPrevious>Back</button>
+                              <button mat-button matStepperNext>Next</button>
+                            </div>
+                          </form>
+                        </mat-step>
+                        <mat-step>
+                          <ng-template matStepLabel>Done</ng-template>
+                          <p>You are now done.</p>
+                          <div>
+                            <button mat-button matStepperPrevious>Back</button>
+                            <button mat-button (click)="stepper.reset()">Reset</button>
+                          </div>
+                        </mat-step>
+                      </mat-horizontal-stepper>                      
+                </div>
             </div>
        
     </section>

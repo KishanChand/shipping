@@ -2444,6 +2444,16 @@ span.round-tab i{
     font-weight: 400;
     border-radius: 4px;
 }
+.error {
+  color: red;
+}
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}
 .list-content a[aria-expanded="true"] i{
 	transform: rotate(180deg);
 }
@@ -2546,3 +2556,5 @@ input[type="checkbox"]:checked::before{
 
   }
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

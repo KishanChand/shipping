@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../.././data.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 declare var $:any;
 @Component({
   selector: 'app-book-shipment',
@@ -8,7 +10,11 @@ declare var $:any;
 })
 export class BookShipmentComponent implements OnInit {
 
-    constructor(private dataRev:DataService) { }
+    isLinear = false;
+    firstFormGroup: FormGroup;
+    secondFormGroup: FormGroup;
+
+    constructor(private dataRev:DataService, private _formBuilder: FormBuilder) { }
 
     ngOnInit() {
         $(document).ready( ()=> {
@@ -45,6 +51,13 @@ export class BookShipmentComponent implements OnInit {
         $('.nav-tabs').on('click', 'li', function() {
             $('.nav-tabs li.active').removeClass('active');
             $(this).addClass('active');
+        });
+
+        this.firstFormGroup = this._formBuilder.group({
+            firstCtrl: ['', Validators.required]
+        });
+        this.secondFormGroup = this._formBuilder.group({
+            secondCtrl: ['', Validators.required]
         });
     }
 

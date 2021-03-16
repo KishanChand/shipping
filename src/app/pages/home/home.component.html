@@ -3,10 +3,10 @@
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="../assets/img/slide1.jpg" class="d-block w-100" alt="...">
+          <img src="assets/img/slide1.jpg" class="d-block w-100" alt="...">
           <div class="sliderContent">
             <div class="home-car-div">
-                <img src="../assets/img/icon-1.png" alt="">
+                <img src="assets/img/icon-1.png" alt="">
                 <ul>
                     <li>FAST</li>
                     <li>SECURED</li>
@@ -27,10 +27,10 @@
           </div>
         </div>
         <div class="carousel-item">
-          <img src="../assets/img/slide2.jpg" class="d-block w-100" alt="...">
+          <img src="assets/img/slide2.jpg" class="d-block w-100" alt="...">
           <div class="sliderContent">
             <div class="home-car-div">
-                <img src="../assets/img/icon-1.png" alt="">
+                <img src="assets/img/icon-1.png" alt="">
                 <ul>
                     <li>FAST</li>
                     <li>SECURED</li>
@@ -105,22 +105,26 @@
                 <div class="form-group">
                   <label>From Country <span>*</span></label>
                   <input type="text" class="form-control" name="fromCountry" formControlName="fromCountry">
+                  <span class="error" *ngIf="fromCountry.invalid && fromCountry.touched">Please Select From Country</span>
                 </div>
                 <div class="form-group">
                   <label>To Country <span>*</span></label>
                   <input type="text" name="toCountry" class="form-control" formControlName="toCountry">
+                  <span class="error" *ngIf="toCountry.invalid && toCountry.touched">Please Select To Country</span>
                 </div>
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>From City <span>*</span></label>
                       <input type="text" class="form-control" name="fromCity" formControlName="fromCity">
+                      <span class="error" *ngIf="fromCity.invalid && fromCity.touched">Please Select From City</span>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>To City <span>*</span></label>
                       <input type="text" name="toCity" class="form-control" formControlName="toCity">
+                      <span class="error" *ngIf="toCity.invalid && toCity.touched">Please Select To City</span>
                     </div>
                   </div>
                 </div>
@@ -129,6 +133,7 @@
                     <div class="form-group">
                       <label>Weight <span>*</span></label>
                       <input type="text" class="form-control" formControlName="weight" name="weight">
+                      <span class="error" *ngIf="weight.invalid && weight.touched">Please Enter Weight</span>
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -139,11 +144,12 @@
                         <option value="KG">KG</option>
                         <option value="LBS">LBS</option>
                       </select>
+                      <span class="error" *ngIf="unit.invalid && unit.touched">Please Select Unit</span>
                     </div>
                   </div>
                 </div>
                 <div class="text-center mt-2">
-                  <button type="submit" class="check-rate-btn">CHECK RATES</button>
+                  <button type="submit" [disabled]="domesticForm.invalid" class="check-rate-btn">CHECK RATES</button>
                 </div>
               </form>
                 </div>
@@ -152,22 +158,26 @@
                     <div class="form-group">
                       <label>From Country <span>*</span></label>
                       <input type="text" class="form-control" name="fromCountry" formControlName="fromCountry">
+                      <span class="error" *ngIf="fromCountry.invalid && fromCountry.touched">Please Select From Country</span>
                     </div>
                     <div class="form-group">
                       <label>To Country <span>*</span></label>
                       <input type="text" name="toCountry" class="form-control" formControlName="toCountry">
+                      <span class="error" *ngIf="toCountry.invalid && toCountry.touched">Please Select To Country</span>
                     </div>
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
                           <label>From City <span>*</span></label>
                           <input type="text" class="form-control" name="fromCity" formControlName="fromCity">
+                          <span class="error" *ngIf="fromCity.invalid && fromCity.touched">Please Select From City</span>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label>To City <span>*</span></label>
                           <input type="text" name="toCity" class="form-control" formControlName="toCity">
+                          <span class="error" *ngIf="toCity.invalid && toCity.touched">Please Select To City</span>
                         </div>
                       </div>
                     </div>
@@ -176,6 +186,7 @@
                         <div class="form-group">
                           <label>Weight <span>*</span></label>
                           <input type="text" class="form-control" formControlName="weight" name="weight">
+                          <span class="error" *ngIf="weight.invalid && weight.touched">Please Enter Weight</span>
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -186,11 +197,12 @@
                             <option value="KG">KG</option>
                             <option value="LBS">LBS</option>
                           </select>
+                          <span class="error" *ngIf="unit.invalid && unit.touched">Please Select Unit</span>
                         </div>
                       </div>
                     </div>
                     <div class="text-center mt-2">
-                      <button type="submit" class="check-rate-btn">CHECK RATES</button>
+                      <button type="submit" class="check-rate-btn" [disabled]="domesticForm.invalid">CHECK RATES</button>
                     </div>
                   </form>
                 </div>

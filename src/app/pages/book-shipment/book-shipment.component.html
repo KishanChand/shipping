@@ -313,62 +313,182 @@
                 </div>
 
                 <div class="col-12">
-                      <div class="title-with-bg">BOOK A SHIPMENT</div>
-                      <mat-horizontal-stepper [linear]="isLinear" #stepper>
-                        <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-                            {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-                          </button>
-                        <mat-step [stepControl]="firstFormGroup">
-                          <form [formGroup]="firstFormGroup">
-                            <ng-template matStepLabel>Fill out your name</ng-template>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h1 class="col-title">Sender</h1>
-                                    <mat-form-field>
-                                        <mat-label>Date</mat-label>
-                                        <input matInput placeholder="" formControlName="dateCtrl" required>
-                                    </mat-form-field>
-                                    <mat-form-field>
-                                        <mat-label>Consignor</mat-label>
-                                        <input matInput placeholder="" formControlName="consignorCtrl" required>
-                                    </mat-form-field>
-                                    <mat-form-field>
-                                        <mat-label>Contact Person</mat-label>
-                                        <input matInput placeholder="" formControlName="contactPersonCtrl" required>
-                                    </mat-form-field>
-                                    <mat-form-field>
-                                        <mat-label>Street Name/Number</mat-label>
-                                        <textarea matInput placeholder="SNCtrl"></textarea>
-                                    </mat-form-field>
+                    <div class="title-with-bg">BOOK A SHIPMENT</div>
+                    <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                    <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+                        {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+                    </button>
+                    <mat-step [stepControl]="firstFormGroup">
+                        <form [formGroup]="firstFormGroup">
+                        <ng-template matStepLabel></ng-template>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5 class="mb-0">Sender</h5>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <mat-form-field>
+                                            <mat-label>Date</mat-label>
+                                            <input matInput placeholder="" formControlName="dateCtrl">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field>
+                                            <mat-label>Consignor</mat-label>
+                                            <input matInput placeholder="" formControlName="consignorCtrl">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field>
+                                            <mat-label>Contact Person</mat-label>
+                                            <input matInput placeholder="" formControlName="contactPersonCtrl">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field>
+                                            <mat-label>Street Name/Number</mat-label>
+                                            <textarea matInput placeholder="" formControlName="snCtrl"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field>
+                                            <mat-label>Zip code</mat-label>
+                                            <input matInput placeholder="" formControlName="zipCtrl">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field>
+                                            <mat-label>Country</mat-label>
+                                            <mat-select formControlName="countryCtrl">
+                                                <mat-option *ngFor="let item of country" [value]="item.value">
+                                                {{item.viewValue}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field>
+                                            <mat-label>Telephone</mat-label>
+                                            <input matInput placeholder="" formControlName="telephoneCtrl" required>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field>
+                                            <mat-label>Fax</mat-label>
+                                            <input matInput placeholder="" formControlName="faxCtrl">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field>
+                                            <mat-label>Email</mat-label>
+                                            <input matInput placeholder="" formControlName="emailCtrl" required>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field>
+                                            <mat-label>Reference No</mat-label>
+                                            <input matInput placeholder="" formControlName="refCtrl">
+                                        </mat-form-field>
+                                    </div>
                                 </div>
                             </div>
-                            <div>
-                              <button mat-button matStepperNext>Next</button>
+
+                            <div class="col-md-6">
+                                <h5 class="mb-0">Receiver</h5>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <mat-form-field>
+                                            <mat-label>Company Name</mat-label>
+                                            <input matInput placeholder="" formControlName="companyCtrl">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field>
+                                            <mat-label>Attention</mat-label>
+                                            <input matInput placeholder="" formControlName="attentionCtrl">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field>
+                                            <mat-label>Street Name/Number</mat-label>
+                                            <textarea matInput placeholder="" formControlName="rsnCtrl"></textarea>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field>
+                                            <mat-label>City</mat-label>
+                                            <input matInput placeholder="" formControlName="cityCtrl">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field>
+                                            <mat-label>Zip code</mat-label>
+                                            <input matInput placeholder="" formControlName="rzipCtrl">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field>
+                                            <mat-label>Country</mat-label>
+                                            <mat-select formControlName="rcountryCtrl">
+                                                <mat-option *ngFor="let item of country" [value]="item.value">
+                                                {{item.viewValue}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field>
+                                            <mat-label>Telephone</mat-label>
+                                            <input matInput placeholder="" formControlName="rtelephoneCtrl" required>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field>
+                                            <mat-label>Mobile</mat-label>
+                                            <input matInput placeholder="" formControlName="mobileCtrl">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field>
+                                            <mat-label>Fax</mat-label>
+                                            <input matInput placeholder="" formControlName="rfaxCtrl">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field>
+                                            <mat-label>Email</mat-label>
+                                            <input matInput placeholder="" formControlName="remailCtrl">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
                             </div>
-                          </form>
-                        </mat-step>
-                        <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
-                          <form [formGroup]="secondFormGroup">
-                            <mat-form-field>
-                              <mat-label>Address</mat-label>
-                              <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                                     required>
-                            </mat-form-field>
-                            <div>
-                              <button mat-button matStepperPrevious>Back</button>
-                              <button mat-button matStepperNext>Next</button>
-                            </div>
-                          </form>
-                        </mat-step>
-                        <mat-step>
-                          <ng-template matStepLabel>Done</ng-template>
-                          <p>You are now done.</p>
-                          <div>
-                            <button mat-button matStepperPrevious>Back</button>
-                            <button mat-button (click)="stepper.reset()">Reset</button>
-                          </div>
-                        </mat-step>
-                      </mat-horizontal-stepper>                      
+                        </div>
+                        <div class="text-right">
+                            <button mat-raised-button color="warn" matStepperNext>Next</button>
+                        </div>
+                        </form>
+                    </mat-step>
+                    <mat-step [stepControl]="secondFormGroup" label="">
+                        <form [formGroup]="secondFormGroup">
+                        <mat-form-field>
+                            <mat-label>Address</mat-label>
+                            <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                                    required>
+                        </mat-form-field>
+                        <div>
+                            <button mat-raised-button matStepperPrevious>Back</button>
+                            <button mat-raised-button color="warn" matStepperNext>Next</button>
+                        </div>
+                        </form>
+                    </mat-step>
+                    <mat-step>
+                        <ng-template matStepLabel></ng-template>
+                        <p>You are now done.</p>
+                        <div>
+                        <button mat-raised-button matStepperPrevious>Back</button>
+                        <button mat-raised-button color="warn" (click)="stepper.reset()">Reset</button>
+                        </div>
+                    </mat-step>
+                    </mat-horizontal-stepper>                      
                 </div>
             </div>
        

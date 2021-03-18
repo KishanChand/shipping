@@ -128,6 +128,11 @@ body {
   #topbar .contact-info {
     color: white;
   }
+  .contact-num {
+    a {
+      color: yellow;
+    }
+  }
   
   #topbar .contact-info i {
     color: #d9ba85;
@@ -2453,6 +2458,10 @@ span.round-tab i{
 
 .mat-form-field {
   margin-top: 16px;
+  width: 100%;
+}
+.mat-step-label {
+  min-width:auto !important;
 }
 .list-content a[aria-expanded="true"] i{
 	transform: rotate(180deg);

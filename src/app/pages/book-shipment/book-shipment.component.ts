@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../.././data.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 declare var $:any;
+interface Country {
+    value: string;
+    viewValue: string;
+}
 @Component({
   selector: 'app-book-shipment',
   templateUrl: './book-shipment.component.html',
@@ -13,6 +17,12 @@ export class BookShipmentComponent implements OnInit {
     isLinear = false;
     firstFormGroup: FormGroup;
     secondFormGroup: FormGroup;
+    toppings = new FormControl();
+    country: Country[] = [
+        {value: 'india-0', viewValue: 'India'},
+        {value: 'abudhabi-1', viewValue: 'Abudhabi'},
+        {value: 'dubai-2', viewValue: 'Dubai'}
+    ];
 
     constructor(private dataRev:DataService, private _formBuilder: FormBuilder) { }
 
@@ -43,18 +53,35 @@ export class BookShipmentComponent implements OnInit {
                 this.prevTab(active);
         
             });
-        });
-    
-    
-    
-    
+        });    
         $('.nav-tabs').on('click', 'li', function() {
             $('.nav-tabs li.active').removeClass('active');
             $(this).addClass('active');
         });
 
+
+
         this.firstFormGroup = this._formBuilder.group({
-            firstCtrl: ['', Validators.required]
+            dateCtrl: [''],
+            consignorCtrl: [''],
+            contactPersonCtrl: [''],
+            snCtrl: [''],
+            zipCtrl: [''],
+            countryCtrl: ['', Validators.required],
+            telephoneCtrl: ['', Validators.required],
+            faxCtrl: [''],
+            emailCtrl: ['', Validators.required],
+            refCtrl: [''],
+            companyCtrl: ['', Validators.required],
+            attentionCtrl: ['', Validators.required],
+            rsnCtrl: ['', Validators.required],
+            cityCtrl: ['', Validators.required],
+            rzipCtrl: [''],
+            rcountryCtrl: ['', Validators.required],
+            rtelephoneCtrl: ['', Validators.required],
+            mobileCtrl: ['', Validators.required],
+            rfaxCtrl: [''],
+            remailCtrl: [''],
         });
         this.secondFormGroup = this._formBuilder.group({
             secondCtrl: ['', Validators.required]

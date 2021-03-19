@@ -5,6 +5,7 @@ import { BookShipmentComponent } from './pages/book-shipment/book-shipment.compo
 import { HomeComponent } from './pages/home/home.component';
 import { ServiceDetailsComponent } from './pages/service-details/service-details.component';
 import { RateComponent } from './pages/rate/rate.component';
+import { CareerComponent } from './pages/career/career.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,11 @@ const routes: Routes = [
     path: 'rate',
     pathMatch: 'full',
     component: RateComponent
+  },
+  {
+    path: 'career',
+    pathMatch:'full',
+    component: CareerComponent
   }
 ];
 

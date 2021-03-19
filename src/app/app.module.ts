@@ -17,6 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule }  from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { CareerComponent } from './pages/career/career.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MatButtonModule } from '@angular/material/button';
     BookShipmentComponent,
     BookCollectionComponent,
     ServiceDetailsComponent,
-    RateComponent
+    RateComponent,
+    CareerComponent
   ],
   imports: [
     BrowserModule,

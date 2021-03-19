@@ -2567,3 +2567,22 @@ input[type="checkbox"]:checked::before{
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.bannerSec {
+  height: 300px;
+  overflow: hidden;
+  background-size: contain;
+}
+.career {
+  background: url(assets/img/career.jpg) no-repeat center center;
+  background-size: cover;
+}
+.serviceDetails {
+  background: url(assets/img/ship.jpg) no-repeat center center;
+  background-size: cover;
+}
+.careerBox {
+  border: 1px solid #ccc;
+  padding: 30px;
+  margin-bottom: 30px;
+}

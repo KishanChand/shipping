@@ -8,10 +8,18 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
   styleUrls: ['./rate.component.scss']
 })
 export class RateComponent implements OnInit {
+  fromCountries:any = [];
+  toCountries:any = [];
   collectRateDetails = ''; 
   constructor(private dataCenter:DataService, public fb:FormBuilder) { }
 
   ngOnInit() {
+    this.dataCenter.getfromCountry().subscribe(x => {
+      this.fromCountries = x.countryList;
+    });
+    this.dataCenter.gettoCountry().subscribe(x => {
+      this.toCountries = x.countryList;
+    });
     this.dataCenter.rateDetails$.subscribe(x => {
       this.rateCalc.patchValue(x);
     });

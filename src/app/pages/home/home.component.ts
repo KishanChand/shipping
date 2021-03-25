@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../.././data.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { interval, Subject } from 'rxjs';
 declare var $:any;
 
 @Component({
@@ -10,12 +11,36 @@ declare var $:any;
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor(private dataCenter:DataService, private router:Router) { }
+  fromCountries:any = [];
+  toCountries:any = [];
+  fromCities:any = [];
+  selectedCountryVal:any;
+  constructor(private dataCenter:DataService, private router:Router) {
+  }
 
   ngOnInit() {
-   
+    this.dataCenter.getfromCountry().subscribe(x => {
+      this.fromCountries = x.countryList;
+      console.log(this.fromCountries, 'check this');
+    });
+
+    this.dataCenter.gettoCountry().subscribe(x => {
+      this.toCountries = x.countryList;
+      console.log(this.toCountries, 'check this');
+    });
+
   }
+
+  findFromCities(eve) {
+    console.log(eve.target.value, '++test');
+    this.selectedCountryVal = {
+      "origin_country_id": eve.target.value
+    }
+    this.dataCenter.getfromCities().subscribe(x => {
+      console.log(x, 'testing peace goes here');
+    });
+  }
+
   ngAfterViewInit(){
     $('.slider-container').slick({
       dots: true,

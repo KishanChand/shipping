@@ -8,12 +8,9 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">From Country <span>*</span></label>
-                                <select class="form-control" formControlName="fromCountry" name="fromCountry">
+                                <select class="form-control" formControlName="fromCountry" name="fromCountries">
                                   <option value="">Select Country</option>
-                                  <option value="india">india</option>
-                                  <option value="australia">australia</option>
-                                  <option value="america">america</option>
-                                  <option value="london">london</option>
+                                  <option *ngFor="let f of fromCountries" id="f.country_id"  [ngValue]="f.country_code">{{f.country_name}}</option>
                                 </select>
                             </div>
                         </div>
@@ -22,10 +19,7 @@
                                 <label for="exampleFormControlSelect1">To Country<span>*</span></label>
                                 <select class="form-control" formControlName="toCountry" name="toCountry">
                                   <option value="">Select Country</option>
-                                  <option value="india">india</option>
-                                  <option value="australia">australia</option>
-                                  <option value="america">america</option>
-                                  <option value="london">london</option>
+                                  <option *ngFor="let t of toCountries" id="t.country_id" [ngValue]="t.country_code">{{t.country_name}}</option>
                                 </select>
                             </div>
                         </div>

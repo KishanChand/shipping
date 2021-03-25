@@ -6,6 +6,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { ServiceDetailsComponent } from './pages/service-details/service-details.component';
 import { RateComponent } from './pages/rate/rate.component';
 import { CareerComponent } from './pages/career/career.component';
+import { MaplocationComponent } from './pages/maplocation/maplocation.component';
+import { ContactusComponent } from './pages/contactus/contactus.component';
 
 
 const routes: Routes = [
@@ -38,6 +40,16 @@ const routes: Routes = [
     path: 'career',
     pathMatch:'full',
     component: CareerComponent
+  },
+  {
+    path: 'findlocations',
+    pathMatch:'full',
+    component: MaplocationComponent
+  },
+  {
+    path: 'contact',
+    pathMatch:'full',
+    component: ContactusComponent
   }
 ];
 

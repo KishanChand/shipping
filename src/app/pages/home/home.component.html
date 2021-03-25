@@ -69,7 +69,7 @@
             <div class="track-card shadow">
               <h1 class="card-title">TRACK YOUR SHIPMENT</h1>
               <form>
-              <div class="radio-btns-div">
+              <!-- <div class="radio-btns-div">
                 <div class="custom-control custom-radio custom-control-inline">
                   <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" checked>
                   <label class="custom-control-label" for="customRadioInline1">Shipment</label>
@@ -78,13 +78,17 @@
                   <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
                   <label class="custom-control-label" for="customRadioInline2">Reference</label>
                 </div>
-              </div>
-              <textarea class="form-control" rows="5" placeholder="Enter your shipment or reference number"></textarea>
-              <p class=""><i class="fas fa-check-circle mr-2"></i>Separate multiple tracking numbers with a return or enter.</p>
-              <p class=""><i class="fas fa-check-circle mr-2"></i>You can enter up to 50 Shipments or Reference Numbers.</p>
-              <div class="text-center mt-2">
-                <button type="submit" class="track-btn">TRACK</button>
+              </div> -->
+              <label>Enter Shipment/Reference Number</label>
+              <input class="form-control" type="text" maxlength="12" placeholder="Enter your shipment or reference number" />
+              <!-- <p class=""><i class="fas fa-check-circle mr-2"></i>Separate multiple tracking numbers with a return or enter.</p>
+              <p class=""><i class="fas fa-check-circle mr-2"></i>You can enter up to 50 Shipments or Reference Numbers.</p> -->
+              <div class="text-left mt-2">
+                <button type="submit" class="track-btn">Single Track</button>
              </div>
+             <hr class="dashed-line" />
+             <p>Please Click here for multi tracking</p>
+             <a href="#" class="track-btn">Multi Track</a>
             </form>
             </div>
           </div>
@@ -92,27 +96,40 @@
             <div class="inquiry-card shadow">
               <h1 class="card-title">RATE INQUIRY</h1>
               <ul class="nav nav-tabs" role="tablist">
+                <!-- <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#domastic-tab" role="tab">Domestic</a>
+                </li> -->
                 <li class="nav-item">
-                  <a class="nav-link active" data-toggle="tab" href="#domastic-tab" role="tab">Domestic</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" data-toggle="tab" href="#internation-tab" role="tab">International</a>
+                  <a class="nav-link active" data-toggle="tab" href="#internation-tab" role="tab">International</a>
                 </li>
               </ul><!-- Tab panes -->
               <div class="tab-content">
-                <div class="tab-pane active" id="domastic-tab" role="tabpanel">
+                <div class="tab-pane active" id="internation-tab" role="tabpanel">
               <form [formGroup]="domesticForm" (ngSubmit)="ratingDetails()">
                 <div class="form-group">
                   <label>From Country <span>*</span></label>
-                  <input type="text" class="form-control" name="fromCountry" formControlName="fromCountry">
+                  <select class="form-control"  formControlName="fromCountry" (change)="findFromCities($event)">
+                    <option value="">Select From Country</option>
+                    <option *ngFor="let c of fromCountries" id="c.country_id" [value]="c.country_code">{{c.country_name}}</option>
+                  </select>
                   <span class="error" *ngIf="fromCountry.invalid && fromCountry.touched">Please Select From Country</span>
                 </div>
                 <div class="form-group">
                   <label>To Country <span>*</span></label>
-                  <input type="text" name="toCountry" class="form-control" formControlName="toCountry">
+                  <select class="form-control" formControlName="toCountry">
+                    <option value="">Select To Country</option>
+                    <option *ngFor="let t of toCountries" id="t.country_id" [ngValue]="t.country_code">{{t.country_name}}</option>
+                  </select>
                   <span class="error" *ngIf="toCountry.invalid && toCountry.touched">Please Select To Country</span>
                 </div>
-                <div class="row">
+                <!-- <div class="form-group">
+                  <label>From City <span>*</span></label>
+                  <select class="form-control" formControlName="fromCity">
+                    <option value="">Select From City</option>
+                    <option *ngFor="let fc of fromCities">{{fc.}}</option>
+                  </select>
+                </div> -->
+                <!-- <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>From City <span>*</span></label>
@@ -127,7 +144,7 @@
                       <span class="error" *ngIf="toCity.invalid && toCity.touched">Please Select To City</span>
                     </div>
                   </div>
-                </div>
+                </div> -->
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
@@ -153,7 +170,7 @@
                 </div>
               </form>
                 </div>
-                <div class="tab-pane" id="internation-tab" role="tabpanel">
+                <!-- <div class="tab-pane" id="domastic-tab" role="tabpanel">
                   <form [formGroup]="domesticForm" (ngSubmit)="ratingDetails()">
                     <div class="form-group">
                       <label>From Country <span>*</span></label>
@@ -205,7 +222,7 @@
                       <button type="submit" class="check-rate-btn" [disabled]="domesticForm.invalid">CHECK RATES</button>
                     </div>
                   </form>
-                </div>
+                </div> -->
                
               </div>
             
@@ -216,7 +233,7 @@
               <h1 class="card-title">FIND SKYNET IN <span>India</span></h1>
               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3722357.3332588463!2d51.71127771069614!3d24.342500942557642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e48dfb1ab12bd%3A0x33d32f56c0080aa7!2sUnited%20Arab%20Emirates!5e0!3m2!1sen!2sin!4v1612451003742!5m2!1sen!2sin" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
               <div class="text-center mt-2">
-                <button type="submit" class="check-rate-btn">FIND NEAREST LOCATION</button>
+                <button type="submit" class="check-rate-btn" routerLink="findlocations">FIND NEAREST LOCATION</button>
               </div>
 
               </div>

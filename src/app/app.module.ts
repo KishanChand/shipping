@@ -18,6 +18,9 @@ import { MatFormFieldModule }  from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { CareerComponent } from './pages/career/career.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MaplocationComponent } from './pages/maplocation/maplocation.component';
+import { ContactusComponent } from './pages/contactus/contactus.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,9 @@ import { CareerComponent } from './pages/career/career.component';
     BookCollectionComponent,
     ServiceDetailsComponent,
     RateComponent,
-    CareerComponent
+    CareerComponent,
+    MaplocationComponent,
+    ContactusComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,8 @@ import { CareerComponent } from './pages/career/career.component';
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

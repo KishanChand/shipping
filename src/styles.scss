@@ -2590,3 +2590,29 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   border-bottom: 1px dashed #fdb3b3;
   margin: 30px 0px;
 }
+.findLocation {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 3px;
+  .mat-button-base.mat-warn  {
+    background-color: #f5ab35;
+  }
+}
+.highLightHeading {
+  color: #f5ab35;
+  font-size: 30px;
+  display: block;
+}
+.mapLocations {
+  .nav-tabs {
+    border:  0px;
+    .nav-link {
+      &.active {
+        background-color: #f5ab35;
+        color: #fff;
+        border-radius: 3px;
+        margin-right: 5px;
+      }
+    }
+  }
+}

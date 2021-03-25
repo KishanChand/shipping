@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { DataService } from '../../data.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
@@ -7,7 +7,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
   templateUrl: './rate.component.html',
   styleUrls: ['./rate.component.scss']
 })
-export class RateComponent implements OnInit {
+export class RateComponent implements OnInit, AfterViewChecked {
   fromCountries:any = [];
   toCountries:any = [];
   collectRateDetails = ''; 
@@ -23,6 +23,10 @@ export class RateComponent implements OnInit {
     this.dataCenter.rateDetails$.subscribe(x => {
       this.rateCalc.patchValue(x);
     });
+  }
+
+  ngAfterViewChecked() {
+    window.scrollTo(0, 0);
   }
 
   rateCalc = new FormGroup({

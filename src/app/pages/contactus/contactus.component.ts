@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -6,11 +6,15 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   templateUrl: './contactus.component.html',
   styleUrls: ['./contactus.component.scss']
 })
-export class ContactusComponent implements OnInit {
+export class ContactusComponent implements OnInit, AfterViewChecked {
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  ngAfterViewChecked() {
+      window.scrollTo(0, 0);
   }
 
   contact = new FormGroup({

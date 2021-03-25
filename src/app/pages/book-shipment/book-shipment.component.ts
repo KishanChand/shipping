@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { DataService } from '../.././data.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
@@ -12,7 +12,7 @@ interface Country {
   templateUrl: './book-shipment.component.html',
   styleUrls: ['./book-shipment.component.scss']
 })
-export class BookShipmentComponent implements OnInit {
+export class BookShipmentComponent implements OnInit, AfterViewChecked {
 
     isLinear = false;
     firstFormGroup: FormGroup;
@@ -86,6 +86,10 @@ export class BookShipmentComponent implements OnInit {
         this.secondFormGroup = this._formBuilder.group({
             secondCtrl: ['', Validators.required]
         });
+    }
+
+    ngAfterViewChecked() {
+        window.scrollTo(0, 0);
     }
 
     nextTab(elem) {

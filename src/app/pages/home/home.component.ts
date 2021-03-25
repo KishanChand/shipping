@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../.././data.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -10,7 +10,7 @@ declare var $:any;
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewChecked {
   fromCountries:any = [];
   toCountries:any = [];
   fromCities:any = [];
@@ -29,6 +29,10 @@ export class HomeComponent implements OnInit {
       console.log(this.toCountries, 'check this');
     });
 
+  }
+
+  ngAfterViewChecked() {
+      window.scrollTo(0, 0);
   }
 
   findFromCities(eve) {

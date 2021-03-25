@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewChecked } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from '../.././data.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
@@ -12,7 +12,7 @@ interface Country {
   templateUrl: './book-shipment.component.html',
   styleUrls: ['./book-shipment.component.scss']
 })
-export class BookShipmentComponent implements OnInit, AfterViewChecked {
+export class BookShipmentComponent implements OnInit {
 
     isLinear = false;
     firstFormGroup: FormGroup;
@@ -27,6 +27,7 @@ export class BookShipmentComponent implements OnInit, AfterViewChecked {
     constructor(private dataRev:DataService, private _formBuilder: FormBuilder) { }
 
     ngOnInit() {
+        window.scrollTo(0, 0);
         $(document).ready( ()=> {
             $('.nav-tabs > li a[title]').tooltip();
             
@@ -58,9 +59,7 @@ export class BookShipmentComponent implements OnInit, AfterViewChecked {
             $('.nav-tabs li.active').removeClass('active');
             $(this).addClass('active');
         });
-
-
-
+        
         this.firstFormGroup = this._formBuilder.group({
             dateCtrl: [''],
             consignorCtrl: [''],
@@ -84,12 +83,12 @@ export class BookShipmentComponent implements OnInit, AfterViewChecked {
             remailCtrl: [''],
         });
         this.secondFormGroup = this._formBuilder.group({
-            secondCtrl: ['', Validators.required]
+            secondTabService: ['', Validators.required],
+            secondTabCountry: ['', Validators.required],
+            secondTabType: ['', Validators.required],
+            secondTabVal: ['', Validators.required],
+            totalPiece: ['', Validators.required]
         });
-    }
-
-    ngAfterViewChecked() {
-        window.scrollTo(0, 0);
     }
 
     nextTab(elem) {

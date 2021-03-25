@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewChecked } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../.././data.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -10,7 +10,7 @@ declare var $:any;
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, AfterViewChecked {
+export class HomeComponent implements OnInit {
   fromCountries:any = [];
   toCountries:any = [];
   fromCities:any = [];
@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit, AfterViewChecked {
   }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.dataCenter.getfromCountry().subscribe(x => {
       this.fromCountries = x.countryList;
       console.log(this.fromCountries, 'check this');
@@ -29,10 +30,6 @@ export class HomeComponent implements OnInit, AfterViewChecked {
       console.log(this.toCountries, 'check this');
     });
 
-  }
-
-  ngAfterViewChecked() {
-      window.scrollTo(0, 0);
   }
 
   findFromCities(eve) {
@@ -58,8 +55,8 @@ export class HomeComponent implements OnInit, AfterViewChecked {
   domesticForm = new FormGroup({
     fromCountry: new FormControl('', Validators.required),
     toCountry: new FormControl('', Validators.required),
-    fromCity: new FormControl('', Validators.required),
-    toCity: new FormControl('', Validators.required),
+    // fromCity: new FormControl('', Validators.required),
+    // toCity: new FormControl('', Validators.required),
     weight: new FormControl('', Validators.required),
     unit: new FormControl('', Validators.required)
   });

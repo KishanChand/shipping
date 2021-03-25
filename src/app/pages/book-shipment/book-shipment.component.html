@@ -4,7 +4,7 @@
     <section class="signup-step-container">
         
             <div class="row d-flex justify-content-center">
-                <div class="col-md-12">
+                <!-- <div class="col-md-12">
                     <div class="wizard">
                         <div class="wizard-inner">
                             <div class="connecting-line"></div>
@@ -310,9 +310,9 @@
                             
                         </form>
                     </div>
-                </div>
+                </div> -->
 
-                <div class="col-12">
+                <div class="col-12 white-bg shadow">
                     <div class="title-with-bg">BOOK A SHIPMENT</div>
                     <mat-horizontal-stepper [linear]="isLinear" #stepper>
                     <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
@@ -469,22 +469,71 @@
                     </mat-step>
                     <mat-step [stepControl]="secondFormGroup" label="">
                         <form [formGroup]="secondFormGroup">
-                        <mat-form-field>
-                            <mat-label>Address</mat-label>
-                            <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                                    required>
-                        </mat-form-field>
-                        <div>
-                            <button mat-raised-button matStepperPrevious>Back</button>
-                            <button mat-raised-button color="warn" matStepperNext>Next</button>
-                        </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field>
+                                        <mat-label>Service</mat-label>
+                                        <mat-select formControlName="secondTabService" required>
+                                            <mat-option *ngFor="let item of country" [value]="item.value">
+                                            {{item.viewValue}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field>
+                                        <mat-label>Country</mat-label>
+                                        <mat-select formControlName="secondTabCountry" required>
+                                            <mat-option *ngFor="let item of country" [value]="item.value">
+                                            {{item.viewValue}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Type</mat-label>
+                                        <input matInput placeholder="Type" formControlName="secondTabType" required>
+                                      </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field>
+                                        <mat-label>Value</mat-label>
+                                        <mat-select formControlName="secondTabVal" required>
+                                            <mat-option *ngFor="let item of country" [value]="item.value">
+                                            {{item.viewValue}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-12">
+                                    <div class="row justify-content-end">
+                                        <div class="col-sm-3">
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Total Pieces</mat-label>
+                                                <input matInput placeholder="Type" formControlName="totalPiece" required>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <button mat-raised-button color="warn" class="mt-3">Add Item</button>    
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="text-right">
+                                        <button mat-raised-button matStepperPrevious class="mr-2">Back</button>
+                                        <button mat-raised-button color="warn" matStepperNext>Next</button>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </mat-step>
                     <mat-step>
                         <ng-template matStepLabel></ng-template>
                         <p>You are now done.</p>
                         <div>
-                        <button mat-raised-button matStepperPrevious>Back</button>
+                        <button mat-raised-button matStepperPrevious class="mr-2">Back</button>
                         <button mat-raised-button color="warn" (click)="stepper.reset()">Reset</button>
                         </div>
                     </mat-step>

@@ -21,6 +21,8 @@ import { CareerComponent } from './pages/career/career.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MaplocationComponent } from './pages/maplocation/maplocation.component';
 import { ContactusComponent } from './pages/contactus/contactus.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { ContactusComponent } from './pages/contactus/contactus.component';
     MatFormFieldModule,
     MatSelectModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatRadioModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

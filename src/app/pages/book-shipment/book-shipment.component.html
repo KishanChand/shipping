@@ -324,7 +324,7 @@
                         <ng-template matStepLabel></ng-template>
                         <div class="row">
                             <div class="col-md-6">
-                                <h5 class="mb-0 title-with-bg">Sender</h5>
+                                <h6 class="mb-0 title-with-bg">Sender</h6>
                                 <div class="row">
                                     <div class="col-6">
                                         <mat-form-field>
@@ -394,7 +394,7 @@
                             </div>
 
                             <div class="col-md-6">
-                                <h5 class="mb-0 title-with-bg">Receiver</h5>
+                                <h6 class="mb-0 title-with-bg">Receiver</h6>
                                 <div class="row">
                                     <div class="col-6">
                                         <mat-form-field>
@@ -471,6 +471,9 @@
                     <mat-step [stepControl]="secondFormGroup" label="">
                         <form [formGroup]="secondFormGroup">
                             <div class="row">
+                                <div class="col-12">
+                                    <h6 class="mb-0 title-with-bg">Shipping Details</h6>
+                                </div>
                                 <div class="col-md-6">
                                     <mat-form-field>
                                         <mat-label>Service</mat-label>
@@ -614,6 +617,16 @@
                                                         </td>
                                                         <td></td>
                                                     </tr>
+                                                    <tr>
+                                                        <td colspan="7" class="text-right">Total Amount</td>
+                                                        <td>
+                                                            <mat-form-field class="example-full-width">
+                                                                <mat-label>Total Amount</mat-label>
+                                                                <input matInput placeholder="Total Amount" >
+                                                            </mat-form-field>
+                                                        </td>
+                                                        <td></td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -631,8 +644,81 @@
                     </mat-step>
                     <mat-step>
                         <ng-template matStepLabel></ng-template>
-                        <p>You are now done.</p>
-                        <div>
+                        <h6 class="mb-0 title-with-bg">Collection and Pickup Details</h6>
+                        <form [formGroup]="thridFormGroup">
+                            <div class="row">
+                                <div class="col-12 mt-2">
+                                    <div class="alert alert-warning" role="alert">
+                                        <b class="mr-2">Note:</b>Shipments booked on Friday will be processed on next working day.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field>
+                                        <mat-label>Collection Ready Date</mat-label>
+                                        <input matInput placeholder="" formControlName="collectionDate">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field>
+                                        <mat-label>Collection Ready Time</mat-label>
+                                        <mat-select formControlName="collectionTime">
+                                            <mat-option *ngFor="let item of country" [value]="item.value">
+                                            {{item.viewValue}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field>
+                                        <mat-label>Collection Cutoff/Closing Time</mat-label>
+                                        <mat-select formControlName="cutoffTime">
+                                            <mat-option *ngFor="let item of country" [value]="item.value">
+                                            {{item.viewValue}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field>
+                                        <mat-label>Vehicle Type</mat-label>
+                                        <mat-select formControlName="vehicleType">
+                                            <mat-option *ngFor="let item of country" [value]="item.value">
+                                            {{item.viewValue}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field>
+                                        <mat-label>KYC Type</mat-label>
+                                        <mat-select formControlName="kycType">
+                                            <mat-option *ngFor="let item of country" [value]="item.value">
+                                            {{item.viewValue}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6 pt-4">
+                                    <mat-radio-group aria-label="Select an option" formControlName="cashType">
+                                        <mat-radio-button color="warn" value="cash">Pay Cash</mat-radio-button>
+                                        <mat-radio-button color="warn" value="online">Pay Online</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field>
+                                        <mat-label>Special Instruction</mat-label>
+                                        <textarea matInput placeholder="" formControlName="specilInst"></textarea>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <!-- <mat-form-field>
+                                        <mat-label>KYC Documents</mat-label>
+                                        <input matInput type="file" (change)="selectFile($event)" />
+                                    </mat-form-field> -->
+                                </div>
+                            </div>
+                        </form>
+                        <div class="text-right">
                         <button mat-raised-button matStepperPrevious class="mr-2">Back</button>
                         <button mat-raised-button color="warn" (click)="stepper.reset()">Reset</button>
                         </div>

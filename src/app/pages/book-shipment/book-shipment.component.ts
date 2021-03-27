@@ -17,6 +17,7 @@ export class BookShipmentComponent implements OnInit {
     isLinear = false;
     firstFormGroup: FormGroup;
     secondFormGroup: FormGroup;
+    thridFormGroup: FormGroup;
     addForm: FormGroup;
     toppings = new FormControl();
     country: Country[] = [
@@ -89,6 +90,15 @@ export class BookShipmentComponent implements OnInit {
             secondTabType: ['', Validators.required],
             secondTabVal: ['', Validators.required],
             totalPiece: ['', Validators.required]
+        });
+        this.thridFormGroup = this._formBuilder.group({
+            collectionDate: [''],
+            collectionTime: [''],
+            cutoffTime: [''],
+            vehicleType: [''],
+            specilInst: [''],
+            kycType: [''],
+            cashType: ['']
         });
         this.addForm = this._formBuilder.group({
             no: [''],

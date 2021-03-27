@@ -2631,3 +2631,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     margin: 0px;
   }
 }
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}

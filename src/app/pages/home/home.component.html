@@ -80,15 +80,15 @@
                 </div>
               </div> -->
               <label>Enter Shipment/Reference Number</label>
-              <input class="form-control" type="text" maxlength="12" placeholder="Enter your shipment or reference number" />
+              <input class="form-control" type="text" maxlength="12" placeholder="Enter your shipment or reference number" #singleTrackNo />
               <!-- <p class=""><i class="fas fa-check-circle mr-2"></i>Separate multiple tracking numbers with a return or enter.</p>
               <p class=""><i class="fas fa-check-circle mr-2"></i>You can enter up to 50 Shipments or Reference Numbers.</p> -->
               <div class="text-left mt-2">
-                <button type="submit" class="track-btn">Single Track</button>
+                <button type="submit" class="track-btn" (click)="singleTrack(singleTrackNo.value)">Single Track</button>
              </div>
              <hr class="dashed-line" />
              <p>Please Click here for multi tracking</p>
-             <a href="#" class="track-btn">Multi Track</a>
+             <a href="#" class="track-btn" (click)="multipleTrack()">Multi Track</a>
             </form>
             </div>
           </div>

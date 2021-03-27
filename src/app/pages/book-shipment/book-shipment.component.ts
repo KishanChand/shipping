@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../.././data.service';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
 
 declare var $:any;
 interface Country {
@@ -17,6 +17,7 @@ export class BookShipmentComponent implements OnInit {
     isLinear = false;
     firstFormGroup: FormGroup;
     secondFormGroup: FormGroup;
+    addForm: FormGroup;
     toppings = new FormControl();
     country: Country[] = [
         {value: 'india-0', viewValue: 'India'},
@@ -89,6 +90,42 @@ export class BookShipmentComponent implements OnInit {
             secondTabVal: ['', Validators.required],
             totalPiece: ['', Validators.required]
         });
+        this.addForm = this._formBuilder.group({
+            no: [''],
+            weight: [''],
+            length: [''],
+            width: [''],
+            height: [''],
+            volume: [''],
+            description: [''],
+            itemDetails: [''],
+            itemRows: this._formBuilder.array([this.initRows()])
+        });
+    }
+
+    get formArr() {
+        return this.addForm.get('itemRows') as FormArray;
+    }
+
+    initRows() {
+        return this._formBuilder.group({
+            no: [''],
+            weight: [''],
+            length: [''],
+            width: [''],
+            height: [''],
+            volume: [''],
+            description: [''],
+            itemDetails: ['']
+        });
+    }
+
+    addNewRow() {
+        this.formArr.push(this.initRows());
+    }
+
+    deleteRow(index: number) {
+        this.formArr.removeAt(index)
     }
 
     nextTab(elem) {

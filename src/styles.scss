@@ -2159,7 +2159,7 @@ body {
   padding: 5px;
   text-transform: uppercase;
   color: #ffff;
-  font-weight: bold;
+  // font-weight: bold;
 }
 .inner-main{
   margin-top: 140px;
@@ -2614,5 +2614,20 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
         margin-right: 5px;
       }
     }
+  }
+}
+.table thead th {
+  vertical-align: middle;
+  font-weight: 400;
+}
+.tableData {
+  .table-bordered td {
+    vertical-align: middle;
+  }
+  .mat-form-field-infix {
+    width: auto;
+  }
+  .mat-form-field {
+    margin: 0px;
   }
 }

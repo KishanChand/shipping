@@ -32,6 +32,15 @@ export class HomeComponent implements OnInit {
 
   }
 
+  singleTrack(vald) {
+    // console.log(vald, '++');
+    window.open('https://tracking.frontierforce.com/tracking.aspx?stid=skynet&cn='+vald, "_blank");
+  }
+
+  multipleTrack() {
+    window.open("https://tracking.frontierforce.com/tracking_search.aspx?stid=skynet", "_blank");
+  }
+
   findFromCities(eve) {
     console.log(eve.target.value, '++test');
     this.selectedCountryVal = {

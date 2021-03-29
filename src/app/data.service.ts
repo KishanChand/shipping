@@ -14,7 +14,6 @@ const httpHeaders = new HttpHeaders({
 export class DataService {
   private rateDetails = new BehaviorSubject<any>('');
   public rateDetails$ = this.rateDetails.asObservable();
-  test;
   constructor(private http: HttpClient) { }
 
   getRateDetails(val) {
@@ -26,25 +25,7 @@ export class DataService {
   }
 
   gettoCountry(val) {
-    console.log(val, 'ceckthis');
-    fetch('http://agsconcreteartdesigns.in/skynet-india/api/website/news_details', {
-      method: 'POST',
-      body: JSON.stringify(
-        {
-            news_id : 1
-        }
-      ),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-        'Access-Control-Allow-Origin': '*'
-      },
-    })
-      .then((response) => response.json())
-      .then((json) => console.log(json, 'fetch result'));
-      this.test = {
-          origin_country_id : 3
-      }
-    return this.http.post('http://agsconcreteartdesigns.in/skynet-india/api/website/destination_country', this.test);
+    return this.http.post(baseUrl+'website/destination_country', '');
   }
 
   getfromCities() {

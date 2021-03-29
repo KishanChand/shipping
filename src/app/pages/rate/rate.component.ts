@@ -23,8 +23,10 @@ export class RateComponent implements OnInit {
     window.scrollTo(0, 0);
     this.originCountryList();
     this.dataCenter.rateDetails$.subscribe(x => {
-      this.destinationCountry(x.fromCountry);
-      this.rateCalc.patchValue(x);
+      if(x != null && x != undefined && x != '') {
+        this.destinationCountry(x.fromCountry);
+        this.rateCalc.patchValue(x);
+      }
     });
   }
 
@@ -39,7 +41,12 @@ export class RateComponent implements OnInit {
   }
 
   destinationCountry(event) {
-    let originCountryId = event.target.value;
+    let originCountryId
+    if(event.target == undefined) {
+      originCountryId = event;
+    } else {
+      originCountryId = event.target.value
+    }
     if(originCountryId != "") {
       this.dataCenter.destinationCountryList(originCountryId).subscribe((response: any) => {
         if(response.Status == "Success") {

@@ -2156,9 +2156,12 @@ body {
 } 
 .title-with-bg{
   background-color: #f74c4c;
-  padding: 5px;
+  padding: 5px 10px;
   text-transform: uppercase;
   color: #ffff;
+  display: inline-block;
+  font-size: 12px;
+  border-radius: 5px;
   // font-weight: bold;
 }
 .inner-main{
@@ -2633,4 +2636,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 .mat-radio-button ~ .mat-radio-button {
   margin-left: 16px;
+}
+.mat-stepper-horizontal, .mat-stepper-vertical {
+  background-color: transparent;
 }

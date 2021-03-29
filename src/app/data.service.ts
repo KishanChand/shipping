@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
+import { baseUrl } from './config';
 
 const httpHeaders = new HttpHeaders({
   'content-type': 'application/json',
@@ -48,6 +49,52 @@ export class DataService {
 
   getfromCities() {
     return this.http.post<any>(`http://agsconcreteartdesigns.in/skynet-india/api/website/origin_city`, JSON.stringify({origin_country_id:3}), {headers: httpHeaders});
+  }
+
+  originCountryList() {
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+
+    return this.http.get(baseUrl+'website/origin_country', {headers: header});
+  }
+
+  destinationCountryList(origin_country_id) {
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+
+    let postData = {
+      "origin_country_id" : origin_country_id
+    };
+
+    return this.http.post(baseUrl+'website/destination_country', postData, {headers: header});
+  }
+
+  ourServiceList() {
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+
+    return this.http.get(baseUrl+'website/our_service_list', {headers: header});
+  }
+
+  newsList() {
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+
+    return this.http.get(baseUrl+'website/news_list', {headers: header});
+  }
+
+  findLocation() {
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+
+    return this.http.get(baseUrl+'website/contact_list', {headers: header});
+  }
+
+  careerList() {
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+
+    return this.http.get(baseUrl+'website/career_list', {headers: header});
   }
 
 }

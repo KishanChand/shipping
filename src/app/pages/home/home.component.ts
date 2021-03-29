@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { DataService } from '../.././data.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { interval, Subject } from 'rxjs';
+import { exit } from 'process';
 declare var $:any;
 
 @Component({
@@ -14,15 +15,61 @@ export class HomeComponent implements OnInit {
   fromCountries:any = [];
   toCountries:any;
   fromCities:any = [];
+  ourService:any = [];
+  allNews:any = [];
   selectedCountryVal:any;
   constructor(private dataCenter:DataService, private router:Router) {
   }
 
   ngOnInit() {
     window.scrollTo(0, 0);
-    this.dataCenter.getfromCountry().subscribe(x => {
-      this.fromCountries = x.countryList;
-      console.log(this.fromCountries, 'check this');
+    this.originCountryList();
+    this.ourServiceList();
+    this.newsList();
+  }
+
+  originCountryList() {
+    this.dataCenter.originCountryList().subscribe((response: any) => {
+      if(response.Status == "Success") {
+        this.fromCountries = response.countryList;
+      } else {
+        this.fromCountries = [];
+      }
+    });
+  }
+
+  destinationCountry(event) {
+    let originCountryId = event.target.value;
+    if(originCountryId != "") {
+      this.dataCenter.destinationCountryList(originCountryId).subscribe((response: any) => {
+        if(response.Status == "Success") {
+          this.toCountries = response.countryList;
+        } else {
+          this.toCountries = [];
+        }
+      });
+    } else {
+      this.toCountries = [];
+    }
+  }
+
+  ourServiceList() {
+    this.dataCenter.ourServiceList().subscribe((response: any) => {
+      if(response.Status == "Success") {
+        this.ourService = response.ourServiceList;
+      } else {
+        this.ourService = [];
+      }
+    });
+  }
+
+  newsList() {
+    this.dataCenter.newsList().subscribe((response: any) => {
+      if(response.Status == "Success") {
+        this.allNews = response.newsList;
+      } else {
+        this.allNews = [];
+      }
     });
   }
 
@@ -76,7 +123,6 @@ export class HomeComponent implements OnInit {
   get unit() { return this.domesticForm.get('unit') }
 
   ratingDetails() {
-    console.log(this.domesticForm.value, 'testing');
     this.dataCenter.getRateDetails(this.domesticForm.value);
     this.router.navigate([ '/rate' ]);
   }

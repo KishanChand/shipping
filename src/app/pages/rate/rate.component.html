@@ -8,9 +8,9 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">From Country <span>*</span></label>
-                                <select class="form-control" formControlName="fromCountry" name="fromCountries">
+                                <select class="form-control" formControlName="fromCountry" (change)="destinationCountry($event)" name="fromCountries">
                                   <option value="">Select Country</option>
-                                  <option *ngFor="let f of fromCountries" id="f.country_id"  [ngValue]="f.country_code">{{f.country_name}}</option>
+                                  <option *ngFor="let f of fromCountries" id="f.country_id"  value="{{f.country_id}}">{{f.country_name}}</option>
                                 </select>
                             </div>
                         </div>
@@ -19,7 +19,7 @@
                                 <label for="exampleFormControlSelect1">To Country<span>*</span></label>
                                 <select class="form-control" formControlName="toCountry" name="toCountry">
                                   <option value="">Select Country</option>
-                                  <option *ngFor="let t of toCountries" id="t.country_id" [ngValue]="t.country_code">{{t.country_name}}</option>
+                                  <option *ngFor="let t of toCountries" id="t.country_id" value="{{t.country_id}}">{{t.country_name}}</option>
                                 </select>
                             </div>
                         </div>

@@ -4,35 +4,12 @@
         <div class="container">
             <!-- <img src="assets/img/career.jpg" class="d-block w-100 rounded" alt="..."> -->
             <h4>Career</h4>
-            <div class="row mt-4">
-                <div class="col-sm-6">
+            <div class="row mt-4" *ngIf="allCareerList.length > 0">
+                <div class="col-sm-6" *ngFor="let careerObj of allCareerList">
                     <div class="careerBox">
-                        <h5 class="mb-4">Position One</h5>
-                        <p>Lorem ipsum dummy content goes here Lorem ipsum dummy content goes here Lorem ipsum dummy content goes here....</p>
-                        <a href="" class="pl-0" mat-button color="warn">Apply Now<span class="material-icons">arrow_right_alt</span></a>
-                    </div>
-                </div>
-
-                <div class="col-sm-6">
-                    <div class="careerBox">
-                        <h5 class="mb-4">Position One</h5>
-                        <p>Lorem ipsum dummy content goes here Lorem ipsum dummy content goes here Lorem ipsum dummy content goes here....</p>
-                        <a href="" class="pl-0" mat-button color="warn">Apply Now<span class="material-icons">arrow_right_alt</span></a>
-                    </div>
-                </div>
-
-                <div class="col-sm-6">
-                    <div class="careerBox">
-                        <h5 class="mb-4">Position One</h5>
-                        <p>Lorem ipsum dummy content goes here Lorem ipsum dummy content goes here Lorem ipsum dummy content goes here....</p>
-                        <a href="" class="pl-0" mat-button color="warn">Apply Now<span class="material-icons">arrow_right_alt</span></a>
-                    </div>
-                </div>
-
-                <div class="col-sm-6">
-                    <div class="careerBox">
-                        <h5 class="mb-4">Position One</h5>
-                        <p>Lorem ipsum dummy content goes here Lorem ipsum dummy content goes here Lorem ipsum dummy content goes here....</p>
+                        <h5 class="mb-4">{{careerObj.career_title}}</h5>
+                        <p>Skils: {{careerObj.skils}}</p>
+                        <p>Experience: {{careerObj.experience}}</p>
                         <a href="" class="pl-0" mat-button color="warn">Apply Now<span class="material-icons">arrow_right_alt</span></a>
                     </div>
                 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from '../../data.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
@@ -11,19 +12,45 @@ export class RateComponent implements OnInit {
   fromCountries:any = [];
   toCountries:any = [];
   collectRateDetails = ''; 
-  constructor(private dataCenter:DataService, public fb:FormBuilder) { }
+  constructor(
+    private dataCenter:DataService, 
+    public fb:FormBuilder,
+    private router:Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
     window.scrollTo(0, 0);
-    this.dataCenter.getfromCountry().subscribe(x => {
-      this.fromCountries = x.countryList;
-    });
-    this.dataCenter.gettoCountry().subscribe(x => {
-      this.toCountries = x.countryList;
-    });
+    this.originCountryList();
     this.dataCenter.rateDetails$.subscribe(x => {
+      this.destinationCountry(x.fromCountry);
       this.rateCalc.patchValue(x);
     });
+  }
+
+  originCountryList() {
+    this.dataCenter.originCountryList().subscribe((response: any) => {
+      if(response.Status == "Success") {
+        this.fromCountries = response.countryList;
+      } else {
+        this.fromCountries = [];
+      }
+    });
+  }
+
+  destinationCountry(event) {
+    let originCountryId = event.target.value;
+    if(originCountryId != "") {
+      this.dataCenter.destinationCountryList(originCountryId).subscribe((response: any) => {
+        if(response.Status == "Success") {
+          this.toCountries = response.countryList;
+        } else {
+          this.toCountries = [];
+        }
+      });
+    } else {
+      this.toCountries = [];
+    }
   }
 
   rateCalc = new FormGroup({

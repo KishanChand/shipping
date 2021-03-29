@@ -63,24 +63,12 @@
                                         <th scope="col" style="width:25%">Email</th>
                                       </tr>
                                     </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                        <td>@mdo</td>
-                                      </tr>
-                                      <tr>
-                                        <td>Larry</td>
-                                        <td>the Bird</td>
-                                        <td>@twitter</td>
-                                        <td>@mdo</td>
+                                    <tbody *ngIf="locationList.length > 0">
+                                      <tr *ngFor="let locationObj of locationList">
+                                        <td>{{locationObj.location}}</td>
+                                        <td>{{locationObj.address}}</td>
+                                        <td>{{locationObj.contact_person_number}}</td>
+                                        <td></td>
                                       </tr>
                                     </tbody>
                                 </table>

@@ -108,9 +108,9 @@
               <form [formGroup]="domesticForm" (ngSubmit)="ratingDetails()">
                 <div class="form-group">
                   <label>From Country <span>*</span></label>
-                  <select class="form-control"  formControlName="fromCountry" (change)="findFromCities($event)">
+                  <select class="form-control"  formControlName="fromCountry" (change)="destinationCountry($event)">
                     <option value="">Select From Country</option>
-                    <option *ngFor="let c of fromCountries" id="c.country_id" [value]="c.country_code">{{c.country_name}}</option>
+                    <option *ngFor="let c of fromCountries" id="c.country_id" [value]="c.country_id">{{c.country_name}}</option>
                   </select>
                   <span class="error" *ngIf="fromCountry.invalid && fromCountry.touched">Please Select From Country</span>
                 </div>
@@ -118,7 +118,7 @@
                   <label>To Country <span>*</span></label>
                   <select class="form-control" formControlName="toCountry">
                     <option value="">Select To Country</option>
-                    <option *ngFor="let t of toCountries" id="t.country_id" [ngValue]="t.country_code">{{t.country_name}}</option>
+                    <option *ngFor="let t of toCountries" id="t.country_id" value="{{t.country_id}}">{{t.country_name}}</option>
                   </select>
                   <span class="error" *ngIf="toCountry.invalid && toCountry.touched">Please Select To Country</span>
                 </div>

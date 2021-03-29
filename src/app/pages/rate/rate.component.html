@@ -8,7 +8,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">From Country <span>*</span></label>
-                                <select class="form-control" formControlName="fromCountry" name="fromCountries">
+                                <select class="form-control" formControlName="fromCountry" name="fromCountries" (change)="findFromCities($event)">
                                   <option value="">Select Country</option>
                                   <option *ngFor="let f of fromCountries" id="f.country_id"  [ngValue]="f.country_code">{{f.country_name}}</option>
                                 </select>

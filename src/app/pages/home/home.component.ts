@@ -12,7 +12,7 @@ declare var $:any;
 })
 export class HomeComponent implements OnInit {
   fromCountries:any = [];
-  toCountries:any = [];
+  toCountries:any;
   fromCities:any = [];
   selectedCountryVal:any;
   constructor(private dataCenter:DataService, private router:Router) {
@@ -24,12 +24,6 @@ export class HomeComponent implements OnInit {
       this.fromCountries = x.countryList;
       console.log(this.fromCountries, 'check this');
     });
-
-    this.dataCenter.gettoCountry().subscribe(x => {
-      this.toCountries = x.countryList;
-      console.log(this.toCountries, 'check this');
-    });
-
   }
 
   singleTrack(vald) {
@@ -48,6 +42,10 @@ export class HomeComponent implements OnInit {
     }
     this.dataCenter.getfromCities().subscribe(x => {
       console.log(x, 'testing peace goes here');
+    });
+    this.dataCenter.gettoCountry(this.selectedCountryVal).subscribe(x => {
+      this.toCountries = x;
+      console.log(this.toCountries, 'check this++');
     });
   }
 

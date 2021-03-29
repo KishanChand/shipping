@@ -11,6 +11,7 @@ export class RateComponent implements OnInit {
   fromCountries:any = [];
   toCountries:any = [];
   collectRateDetails = ''; 
+  selectedCountryVal:any;
   constructor(private dataCenter:DataService, public fb:FormBuilder) { }
 
   ngOnInit() {
@@ -18,11 +19,18 @@ export class RateComponent implements OnInit {
     this.dataCenter.getfromCountry().subscribe(x => {
       this.fromCountries = x.countryList;
     });
-    this.dataCenter.gettoCountry().subscribe(x => {
-      this.toCountries = x.countryList;
-    });
     this.dataCenter.rateDetails$.subscribe(x => {
       this.rateCalc.patchValue(x);
+    });
+  }
+
+  findFromCities(eve) {
+    this.selectedCountryVal = {
+      "origin_country_id": eve.target.value
+    }
+    this.dataCenter.gettoCountry(this.selectedCountryVal).subscribe(x => {
+      this.toCountries = x;
+      console.log(this.toCountries, 'check this');
     });
   }
 

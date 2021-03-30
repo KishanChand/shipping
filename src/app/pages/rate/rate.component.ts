@@ -85,10 +85,17 @@ export class RateComponent implements OnInit {
       "weight": Number(this.rateCalc.value.weight),
       "unit": this.rateCalc.value.unit
     }
-    this.dataCenter.priceCalc(priceCalcData).subscribe(data => {
+    this.dataCenter.priceCalc(priceCalcData).subscribe((data: any) => {
       console.log(data, 'er');
       if(data.Status == 'Success') {
         this.priceResponse = data;
+      } else {
+        this.priceResponse = {
+          "totalPrice": 0,
+          "vatPercentage": 0,
+          "vatAmount": 0,
+          "netPrice": 0
+        }        
       }
       // this.shippingCharge = data.totalPrice;
       // console.log(data, 'check this price response data');

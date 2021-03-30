@@ -130,7 +130,12 @@ body {
   }
   .contact-num {
     a {
-      color: yellow;
+      color: #fff;
+    }
+  }
+  p {
+    &.contact-num {
+      color: #861212;
     }
   }
   
@@ -1939,7 +1944,7 @@ body {
       justify-content: space-between;
       align-items: center;
       span{
-        color: yellow;
+        color: #fff;
       }
       ul,p{
           margin: 0px;
@@ -1947,20 +1952,14 @@ body {
       }
       .contact-phone-div{
           margin-right: 70px;
+          color: #fff;
       }
   }
   .sign-in-btn{
-    height: 40px;
-    padding: 9px;
-    position: absolute;
-    right: 0;
     text-align: center;
-    top: 0;
-    width: 150px;
     background-color: #f5ab35;
-    color: #fff;
-    text-transform: uppercase;
     font-weight: bold;
+    font-size: 14px;
     &:hover{
         background-color: #fff;
         color: #f5ab35;
@@ -2122,6 +2121,7 @@ body {
     .date{
       font-size: 15px;
       color: gray;
+      text-align: right;
     }
   }
   .slick-prev:before, .slick-next:before{
@@ -2163,6 +2163,9 @@ body {
   font-size: 12px;
   border-radius: 5px;
   // font-weight: bold;
+  top: -10px;
+  position: absolute;
+  left: 60px;
 }
 .inner-main{
   margin-top: 140px;
@@ -2639,4 +2642,55 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 .mat-stepper-horizontal, .mat-stepper-vertical {
   background-color: transparent;
+}
+.navbar-collapse.collapse.show {
+  border-top: 1px solid #ddd;
+  margin-top: 10px;
+}
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+ color: #f74c4c;
+}
+.innerTimeSec {
+  background-color: #ff4d4d;
+  display: none;
+}
+.redBorder {
+  border: 1px solid #ff4d4d;
+}
+.addressDetailSec p {
+  border-left: 1px dotted #ff4d4d;
+  padding-left: 40px;
+  position: relative;
+  margin-bottom: 0px;
+  padding-bottom: 30px;
+  &:last-child {
+    border-left: 0px;
+  }
+  .contactIcon {
+    top: 0px;
+    left: -15px;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ff4d4d;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    text-align: center;
+    color: #ff4d4d;
+    padding-top: 4px;
+  }
+}
+@media(max-width: 767px) {
+  #topbar {
+    height: auto;
+    &.hidden-xs {
+      display: none !important;
+    }
+  }
+  #header {
+    top: 0px;
+  }
+  .innerTimeSec {
+    display: block;
+  }
 }

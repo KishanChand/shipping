@@ -1,27 +1,67 @@
 <!-- ======= Top Bar ======= -->
-<div id="topbar" class="d-flex align-items-center fixed-top">
-    <div class="container d-flex top-bar-container">
+<div id="topbar" class="d-flex align-items-center fixed-top hidden-xs">
+    <div class="container-fluid d-flex top-bar-container">
         <div class="contact-phone-div">
           <p class="contact-num"><i class="far fa-envelope"></i> Mail: <span class="theme-clr"> <a href="mailto:Infoindia@Skynetworldwide.Com">Infoindia@Skynetworldwide.Com</a> </span> <i class="fas fa-calendar-alt ml-3"></i><span class="ml-1">Mon - Sat : 09:00 - 22:00</span></p>
         </div>
-        <div class="contact-phone-div">
+        <div class="">
           <p class="contact-num">  <i class="fas fa-phone-alt"></i> Call us now: <span class="theme-clr"> +91 9811234230 </span> </p>
-          <a href="https://ws01.ffdx.net/v4/login.aspx?stid=skynet" target="blank" class="sign-in-btn"> Customer Login </a>
         </div>
-      </div>
-    
     </div>
+</div>
 
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="" routerLink="">HOME</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              SHIPPING
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" routerLink="book-shipment">Book Shipment</a>
+              <a class="dropdown-item" routerLink="book-collection">Book Collection</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="" routerLink="career">CAREER</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="" routerLink="contact">CONTACT</a>
+          </li>
+          <li class="nav-item">
+            <a href="https://ws01.ffdx.net/v4/login.aspx?stid=skynet" target="blank" class="nav-link sign-in-btn"> CUSTOMER LOGIN </a>
+          </li>
+        </ul>
+        <div class="align-items-center p-2 innerTimeSec">
+            <div class="container-fluid d-flex top-bar-container">
+                <div class="contact-phone-div">
+                  <p class="contact-num"><i class="far fa-envelope"></i> Mail: <span class="theme-clr"> <a href="mailto:Infoindia@Skynetworldwide.Com">Infoindia@Skynetworldwide.Com</a> </span> <i class="fas fa-calendar-alt ml-3"></i><span class="ml-1">Mon - Sat : 09:00 - 22:00</span></p>
+                </div>
+                <div class="">
+                  <p class="contact-num">  <i class="fas fa-phone-alt"></i> Call us now: <span class="theme-clr"> +91 9811234230 </span> </p>
+                </div>
+            </div>
+        </div>
+      </div>
+    </nav>
+    
     <div class="container d-flex align-items-center">
 
       <!-- <h1 class="logo mr-auto"><a href="index.html">Restaurantly</a></h1> -->
       <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
 
       <nav class="nav-menu d-none d-lg-block">
-        <ul>
+        <!-- <ul>
           <li class="active"><a href="" routerLink="">HOME</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -33,11 +73,11 @@
             
             </ul>
           </li>
-          <!-- <li><a href="#">ABOUT</a></li>
-          <li><a href="#">TRACKING</a></li> -->
+          <li><a href="#">ABOUT</a></li>
+          <li><a href="#">TRACKING</a></li>
           <li><a href="" routerLink="career">CAREER</a></li>
           <li><a href="" routerLink="contact">CONTACT</a></li>
-        </ul>
+        </ul> -->
       </nav><!-- .nav-menu -->
 
     </div>

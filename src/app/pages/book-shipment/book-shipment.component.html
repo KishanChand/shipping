@@ -322,9 +322,9 @@
                     <mat-step [stepControl]="firstFormGroup">
                         <form [formGroup]="firstFormGroup">
                             <ng-template matStepLabel></ng-template>
-                            <div class="row">
+                            <div class="row mt-3">
                                 <div class="col-md-6">
-                                    <div class="white-bg shadow p-5">
+                                    <div class="white-bg shadow p-5 redBorder">
                                         <h6 class="mb-0 title-with-bg">Sender</h6>
                                         <div class="row">
                                             <div class="col-6">
@@ -396,7 +396,7 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <div class="white-bg shadow p-5">
+                                    <div class="white-bg shadow p-5 redBorder">
                                         <h6 class="mb-0 title-with-bg">Receiver</h6>
                                         <div class="row">
                                             <div class="col-6">
@@ -474,261 +474,269 @@
                     </mat-step>
                     <mat-step [stepControl]="secondFormGroup" label="">
                         <form [formGroup]="secondFormGroup">
-                            <div class="white-bg shadow p-5">
-                                <div class="row">
-                                    <div class="col-12">
+                            <div class="row mt-3">
+                                <div class="col-12">
+                                    <div class="white-bg shadow p-5 redBorder">
                                         <h6 class="mb-0 title-with-bg">Shipping Details</h6>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <mat-form-field>
-                                            <mat-label>Service</mat-label>
-                                            <mat-select formControlName="secondTabService" required>
-                                                <mat-option *ngFor="let item of country" [value]="item.value">
-                                                {{item.viewValue}}
-                                                </mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <mat-form-field>
-                                            <mat-label>Country</mat-label>
-                                            <mat-select formControlName="secondTabCountry" required>
-                                                <mat-option *ngFor="let item of country" [value]="item.value">
-                                                {{item.viewValue}}
-                                                </mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <mat-form-field class="example-full-width">
-                                            <mat-label>Type</mat-label>
-                                            <input matInput placeholder="Type" formControlName="secondTabType" required>
-                                        </mat-form-field>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <mat-form-field>
-                                            <mat-label>Value</mat-label>
-                                            <mat-select formControlName="secondTabVal" required>
-                                                <mat-option *ngFor="let item of country" [value]="item.value">
-                                                {{item.viewValue}}
-                                                </mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
-                                    </div>
-                                    <div class="col-12">
-                                        <form class="tableData" [formGroup]="addForm">
-                                            <div class="table-responsive" formArrayName="itemRows">
-                                                <table class="table table-bordered">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>No</th>
-                                                            <th>Weight(KG(s))</th>
-                                                            <th>Length(Cm(s))</th>
-                                                            <th>Width(Cm(s))</th>
-                                                            <th>Height(Cm(s))</th>
-                                                            <th>Vol. Wt.</th>
-                                                            <th>Description</th>
-                                                            <th>Item Details</th>
-                                                            <th class="text-center">
-                                                                <!-- <button mat-raised-button color="warn">
-                                                                    <span class="material-icons">add</span>
-                                                                </button> -->
-                                                                <button mat-icon-button color="primary" (click)="addNewRow()">
-                                                                    <span class="material-icons">add</span>
-                                                                </button>
-                                                            </th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr *ngFor="let item of addForm.controls.itemRows['controls']; let i=index" [formGroupName]="i">
-                                                            <td>
-                                                                {{i+1}}
-                                                            </td>
-                                                            <td>
-                                                                <mat-form-field class="example-full-width">
-                                                                    <mat-label>Weight</mat-label>
-                                                                    <input matInput placeholder="Weight" id="weight_{{i}}" formControlName="weight">
-                                                                </mat-form-field>
-                                                            </td>
-                                                            <td>
-                                                                <mat-form-field class="example-full-width">
-                                                                    <mat-label>Length</mat-label>
-                                                                    <input matInput placeholder="Length" formControlName="length">
-                                                                </mat-form-field>
-                                                            </td>
-                                                            <td>
-                                                                <mat-form-field class="example-full-width">
-                                                                    <mat-label>Width</mat-label>
-                                                                    <input matInput placeholder="Width" formControlName="width">
-                                                                </mat-form-field>
-                                                            </td>
-                                                            <td>
-                                                                <mat-form-field class="example-full-width">
-                                                                    <mat-label>Height</mat-label>
-                                                                    <input matInput placeholder="Height" formControlName="height">
-                                                                </mat-form-field>
-                                                            </td>
-                                                            <td>
-                                                                <mat-form-field class="example-full-width">
-                                                                    <mat-label>Volume</mat-label>
-                                                                    <input matInput placeholder="Volume" formControlName="volume">
-                                                                </mat-form-field>
-                                                            </td>
-                                                            <td>
-                                                                <mat-form-field class="example-full-width">
-                                                                    <mat-label>Description</mat-label>
-                                                                    <input matInput placeholder="Description" formControlName="description">
-                                                                </mat-form-field>
-                                                            </td>
-                                                            <td>
-                                                                <mat-form-field class="example-full-width">
-                                                                    <mat-label>Item Details</mat-label>
-                                                                    <input matInput placeholder="Item Details" formControlName="itemDetails">
-                                                                </mat-form-field>
-                                                            </td>
-                                                            <td class="text-center">
-                                                                <button mat-icon-button color="warn" (click)="deleteRow(i)">
-                                                                    <span class="material-icons">delete</span>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="7" class="text-right">Total Weight</td>
-                                                            <td>
-                                                                <mat-form-field class="example-full-width">
-                                                                    <mat-label>Total Weight</mat-label>
-                                                                    <input matInput placeholder="Total Weight" >
-                                                                </mat-form-field>
-                                                            </td>
-                                                            <td></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="7" class="text-right">Total Volume Weight</td>
-                                                            <td>
-                                                                <mat-form-field class="example-full-width">
-                                                                    <mat-label>Total Volume Weight</mat-label>
-                                                                    <input matInput placeholder="Total Volume Weight" >
-                                                                </mat-form-field>
-                                                            </td>
-                                                            <td></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="7" class="text-right">Total Chargeable Weight</td>
-                                                            <td>
-                                                                <mat-form-field class="example-full-width">
-                                                                    <mat-label>Total Chargeable Weight</mat-label>
-                                                                    <input matInput placeholder="Total Chargeable Weight" >
-                                                                </mat-form-field>
-                                                            </td>
-                                                            <td></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="7" class="text-right">Total Amount</td>
-                                                            <td>
-                                                                <mat-form-field class="example-full-width">
-                                                                    <mat-label>Total Amount</mat-label>
-                                                                    <input matInput placeholder="Total Amount" >
-                                                                </mat-form-field>
-                                                            </td>
-                                                            <td></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                        <div class="row">                                    
+                                            <div class="col-md-6">
+                                                <mat-form-field>
+                                                    <mat-label>Service</mat-label>
+                                                    <mat-select formControlName="secondTabService" required>
+                                                        <mat-option *ngFor="let item of country" [value]="item.value">
+                                                        {{item.viewValue}}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
                                             </div>
-                                        </form>
+                                            <div class="col-md-6">
+                                                <mat-form-field>
+                                                    <mat-label>Country</mat-label>
+                                                    <mat-select formControlName="secondTabCountry" required>
+                                                        <mat-option *ngFor="let item of country" [value]="item.value">
+                                                        {{item.viewValue}}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <mat-form-field class="example-full-width">
+                                                    <mat-label>Type</mat-label>
+                                                    <input matInput placeholder="Type" formControlName="secondTabType" required>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <mat-form-field>
+                                                    <mat-label>Value</mat-label>
+                                                    <mat-select formControlName="secondTabVal" required>
+                                                        <mat-option *ngFor="let item of country" [value]="item.value">
+                                                        {{item.viewValue}}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-12">
+                                                <form class="tableData" [formGroup]="addForm">
+                                                    <div class="table-responsive" formArrayName="itemRows">
+                                                        <table class="table table-bordered">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>No</th>
+                                                                    <th>Weight(KG(s))</th>
+                                                                    <th>Length(Cm(s))</th>
+                                                                    <th>Width(Cm(s))</th>
+                                                                    <th>Height(Cm(s))</th>
+                                                                    <th>Vol. Wt.</th>
+                                                                    <th>Description</th>
+                                                                    <th>Item Details</th>
+                                                                    <th class="text-center">
+                                                                        <!-- <button mat-raised-button color="warn">
+                                                                            <span class="material-icons">add</span>
+                                                                        </button> -->
+                                                                        <button mat-icon-button color="primary" (click)="addNewRow()">
+                                                                            <span class="material-icons">add</span>
+                                                                        </button>
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr *ngFor="let item of addForm.controls.itemRows['controls']; let i=index" [formGroupName]="i">
+                                                                    <td>
+                                                                        {{i+1}}
+                                                                    </td>
+                                                                    <td>
+                                                                        <mat-form-field class="example-full-width">
+                                                                            <mat-label>Weight</mat-label>
+                                                                            <input matInput placeholder="Weight" id="weight_{{i}}" formControlName="weight">
+                                                                        </mat-form-field>
+                                                                    </td>
+                                                                    <td>
+                                                                        <mat-form-field class="example-full-width">
+                                                                            <mat-label>Length</mat-label>
+                                                                            <input matInput placeholder="Length" formControlName="length">
+                                                                        </mat-form-field>
+                                                                    </td>
+                                                                    <td>
+                                                                        <mat-form-field class="example-full-width">
+                                                                            <mat-label>Width</mat-label>
+                                                                            <input matInput placeholder="Width" formControlName="width">
+                                                                        </mat-form-field>
+                                                                    </td>
+                                                                    <td>
+                                                                        <mat-form-field class="example-full-width">
+                                                                            <mat-label>Height</mat-label>
+                                                                            <input matInput placeholder="Height" formControlName="height">
+                                                                        </mat-form-field>
+                                                                    </td>
+                                                                    <td>
+                                                                        <mat-form-field class="example-full-width">
+                                                                            <mat-label>Volume</mat-label>
+                                                                            <input matInput placeholder="Volume" formControlName="volume">
+                                                                        </mat-form-field>
+                                                                    </td>
+                                                                    <td>
+                                                                        <mat-form-field class="example-full-width">
+                                                                            <mat-label>Description</mat-label>
+                                                                            <input matInput placeholder="Description" formControlName="description">
+                                                                        </mat-form-field>
+                                                                    </td>
+                                                                    <td>
+                                                                        <mat-form-field class="example-full-width">
+                                                                            <mat-label>Item Details</mat-label>
+                                                                            <input matInput placeholder="Item Details" formControlName="itemDetails">
+                                                                        </mat-form-field>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <button mat-icon-button color="warn" (click)="deleteRow(i)">
+                                                                            <span class="material-icons">delete</span>
+                                                                        </button>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="7" class="text-right">Total Weight</td>
+                                                                    <td>
+                                                                        <mat-form-field class="example-full-width">
+                                                                            <mat-label>Total Weight</mat-label>
+                                                                            <input matInput placeholder="Total Weight" >
+                                                                        </mat-form-field>
+                                                                    </td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="7" class="text-right">Total Volume Weight</td>
+                                                                    <td>
+                                                                        <mat-form-field class="example-full-width">
+                                                                            <mat-label>Total Volume Weight</mat-label>
+                                                                            <input matInput placeholder="Total Volume Weight" >
+                                                                        </mat-form-field>
+                                                                    </td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="7" class="text-right">Total Chargeable Weight</td>
+                                                                    <td>
+                                                                        <mat-form-field class="example-full-width">
+                                                                            <mat-label>Total Chargeable Weight</mat-label>
+                                                                            <input matInput placeholder="Total Chargeable Weight" >
+                                                                        </mat-form-field>
+                                                                    </td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="7" class="text-right">Total Amount</td>
+                                                                    <td>
+                                                                        <mat-form-field class="example-full-width">
+                                                                            <mat-label>Total Amount</mat-label>
+                                                                            <input matInput placeholder="Total Amount" >
+                                                                        </mat-form-field>
+                                                                    </td>
+                                                                    <td></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="text-right mt-3">
-                                    <button mat-raised-button matStepperPrevious class="mr-2">Back</button>
-                                    <button mat-raised-button color="warn" matStepperNext>Next</button>
+                                <div class="col-12">
+                                    <div class="text-right mt-3">
+                                        <button mat-raised-button matStepperPrevious class="mr-2">Back</button>
+                                        <button mat-raised-button color="warn" matStepperNext>Next</button>
+                                    </div>
                                 </div>
                             </div>
                         </form>
                     </mat-step>
                     <mat-step>
-                        <div class="white-bg shadow p-5">
-                            <ng-template matStepLabel></ng-template>
-                            <h6 class="mb-0 title-with-bg">Collection and Pickup Details</h6>
-                            <form [formGroup]="thridFormGroup">
-                                <div class="row">
-                                    <div class="col-12 mt-2">
-                                        <div class="alert alert-warning" role="alert">
-                                            <b class="mr-2">Note:</b>Shipments booked on Friday will be processed on next working day.
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <mat-form-field>
-                                            <mat-label>Collection Ready Date</mat-label>
-                                            <input matInput placeholder="" formControlName="collectionDate">
-                                        </mat-form-field>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <mat-form-field>
-                                            <mat-label>Collection Ready Time</mat-label>
-                                            <mat-select formControlName="collectionTime">
-                                                <mat-option *ngFor="let item of country" [value]="item.value">
-                                                {{item.viewValue}}
-                                                </mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <mat-form-field>
-                                            <mat-label>Collection Cutoff/Closing Time</mat-label>
-                                            <mat-select formControlName="cutoffTime">
-                                                <mat-option *ngFor="let item of country" [value]="item.value">
-                                                {{item.viewValue}}
-                                                </mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <mat-form-field>
-                                            <mat-label>Vehicle Type</mat-label>
-                                            <mat-select formControlName="vehicleType">
-                                                <mat-option *ngFor="let item of country" [value]="item.value">
-                                                {{item.viewValue}}
-                                                </mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <mat-form-field>
-                                            <mat-label>KYC Type</mat-label>
-                                            <mat-select formControlName="kycType">
-                                                <mat-option *ngFor="let item of country" [value]="item.value">
-                                                {{item.viewValue}}
-                                                </mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
-                                    </div>
-                                    <div class="col-md-6 pt-4">
-                                        <mat-radio-group aria-label="Select an option" formControlName="cashType">
-                                            <mat-radio-button color="warn" value="cash">Pay Cash</mat-radio-button>
-                                            <mat-radio-button color="warn" value="online">Pay Online</mat-radio-button>
-                                        </mat-radio-group>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <mat-form-field>
-                                            <mat-label>Special Instruction</mat-label>
-                                            <textarea matInput placeholder="" formControlName="specilInst"></textarea>
-                                        </mat-form-field>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <!-- <mat-form-field>
-                                            <mat-label>KYC Documents</mat-label>
-                                            <input matInput type="file" (change)="selectFile($event)" />
-                                        </mat-form-field> -->
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <div class="white-bg shadow p-5 redBorder">
+                                    <h6 class="mb-0 title-with-bg">Collection and Pickup Details</h6>
+                                    <div class="row">
+                                        <ng-template matStepLabel></ng-template>
+                                        <form [formGroup]="thridFormGroup">
+                                            <div class="row">
+                                                <div class="col-12 mt-2">
+                                                    <div class="alert alert-warning" role="alert">
+                                                        <b class="mr-2">Note:</b>Shipments booked on Friday will be processed on next working day.
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <mat-form-field>
+                                                        <mat-label>Collection Ready Date</mat-label>
+                                                        <input matInput placeholder="" formControlName="collectionDate">
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <mat-form-field>
+                                                        <mat-label>Collection Ready Time</mat-label>
+                                                        <mat-select formControlName="collectionTime">
+                                                            <mat-option *ngFor="let item of country" [value]="item.value">
+                                                            {{item.viewValue}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <mat-form-field>
+                                                        <mat-label>Collection Cutoff/Closing Time</mat-label>
+                                                        <mat-select formControlName="cutoffTime">
+                                                            <mat-option *ngFor="let item of country" [value]="item.value">
+                                                            {{item.viewValue}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <mat-form-field>
+                                                        <mat-label>Vehicle Type</mat-label>
+                                                        <mat-select formControlName="vehicleType">
+                                                            <mat-option *ngFor="let item of country" [value]="item.value">
+                                                            {{item.viewValue}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <mat-form-field>
+                                                        <mat-label>KYC Type</mat-label>
+                                                        <mat-select formControlName="kycType">
+                                                            <mat-option *ngFor="let item of country" [value]="item.value">
+                                                            {{item.viewValue}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-md-6 pt-4">
+                                                    <mat-radio-group aria-label="Select an option" formControlName="cashType">
+                                                        <mat-radio-button color="warn" value="cash">Pay Cash</mat-radio-button>
+                                                        <mat-radio-button color="warn" value="online">Pay Online</mat-radio-button>
+                                                    </mat-radio-group>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <mat-form-field>
+                                                        <mat-label>Special Instruction</mat-label>
+                                                        <textarea matInput placeholder="" formControlName="specilInst"></textarea>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <!-- <mat-form-field>
+                                                        <mat-label>KYC Documents</mat-label>
+                                                        <input matInput type="file" (change)="selectFile($event)" />
+                                                    </mat-form-field> -->
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
-                        <div class="text-right mt-3">
-                        <button mat-raised-button matStepperPrevious class="mr-2">Back</button>
-                        <button mat-raised-button (click)="stepper.reset()" class="mr-2">Reset</button>
-                        <button mat-raised-button color="warn" (click)="stepper.reset()">Submit</button>
+                                <div class="text-right mt-3">
+                                    <button mat-raised-button matStepperPrevious class="mr-2">Back</button>
+                                    <button mat-raised-button (click)="stepper.reset()" class="mr-2">Reset</button>
+                                    <button mat-raised-button color="warn" (click)="stepper.reset()">Submit</button>
+                                </div>
+                            </div>
                         </div>
                     </mat-step>
                     </mat-horizontal-stepper>                      

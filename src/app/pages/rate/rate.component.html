@@ -129,15 +129,15 @@
                                         Shipping
                                     </td>
                                     <td style="width:50%; text-align: right;">
-                                        Rs.100
+                                        {{priceResponse.totalPrice | number:'.2'}}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="width:50%">
-                                        VAT(5%)
+                                        VAT({{priceResponse.vatPercentage}}%)
                                     </td>
                                     <td style="width:50%; text-align: right;">
-                                        Rs.100
+                                        {{priceResponse.vatAmount | number:'.2'}}
                                     </td>
                                 </tr>
                                 <tr>
@@ -145,7 +145,7 @@
                                         Total
                                     </td>
                                     <td style="width:50%; text-align: right;">
-                                        Rs.200
+                                        {{priceResponse.netPrice | number:'.2'}}
                                     </td>
                                 </tr>
                             </tbody>

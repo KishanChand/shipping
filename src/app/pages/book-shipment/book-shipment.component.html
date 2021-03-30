@@ -547,7 +547,7 @@
                                                                     <td>
                                                                         <mat-form-field class="example-full-width">
                                                                             <mat-label>Weight</mat-label>
-                                                                            <input matInput placeholder="Weight" id="weight_{{i}}" formControlName="weight">
+                                                                            <input matInput placeholder="Weight" id="weight_{{i}}" #weightFilled formControlName="weight" (change)="weight(weightFilled.value)">
                                                                         </mat-form-field>
                                                                     </td>
                                                                     <td>
@@ -571,7 +571,7 @@
                                                                     <td>
                                                                         <mat-form-field class="example-full-width">
                                                                             <mat-label>Volume</mat-label>
-                                                                            <input matInput placeholder="Volume" formControlName="volume">
+                                                                            <input matInput placeholder="Volume" #vWeightFilled formControlName="volume" (change)="vWeight(vWeightFilled.value)">
                                                                         </mat-form-field>
                                                                     </td>
                                                                     <td>
@@ -597,7 +597,7 @@
                                                                     <td>
                                                                         <mat-form-field class="example-full-width">
                                                                             <mat-label>Total Weight</mat-label>
-                                                                            <input matInput placeholder="Total Weight" >
+                                                                            <input matInput placeholder="Total Weight" [value]="totalWeight">
                                                                         </mat-form-field>
                                                                     </td>
                                                                     <td></td>
@@ -607,7 +607,7 @@
                                                                     <td>
                                                                         <mat-form-field class="example-full-width">
                                                                             <mat-label>Total Volume Weight</mat-label>
-                                                                            <input matInput placeholder="Total Volume Weight" >
+                                                                            <input matInput placeholder="Total Volume Weight" [value]="totalVWeight">
                                                                         </mat-form-field>
                                                                     </td>
                                                                     <td></td>
@@ -617,7 +617,7 @@
                                                                     <td>
                                                                         <mat-form-field class="example-full-width">
                                                                             <mat-label>Total Chargeable Weight</mat-label>
-                                                                            <input matInput placeholder="Total Chargeable Weight" >
+                                                                            <input matInput placeholder="Total Chargeable Weight" [value]="chargeableWeight">
                                                                         </mat-form-field>
                                                                     </td>
                                                                     <td></td>

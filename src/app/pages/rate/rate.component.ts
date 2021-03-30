@@ -12,6 +12,12 @@ export class RateComponent implements OnInit {
   fromCountries:any = [];
   toCountries:any = [];
   collectRateDetails = ''; 
+  priceResponse:any = {
+    "totalPrice": 0,
+    "vatPercentage": 0,
+    "vatAmount": 0,
+    "netPrice": 0
+  };
   constructor(
     private dataCenter:DataService, 
     public fb:FormBuilder,
@@ -70,7 +76,23 @@ export class RateComponent implements OnInit {
   });
 
   rateCalculator() {
-    console.log(this.rateCalc.value);
+    let priceCalcData = {
+      "origin_country_id": Number(this.rateCalc.value.fromCountry),
+      "origin_city_id": 1,
+      "destination_country_id": Number(this.rateCalc.value.toCountry),
+      "destination_city_id": 2,
+      "service_id": "",
+      "weight": Number(this.rateCalc.value.weight),
+      "unit": this.rateCalc.value.unit
+    }
+    this.dataCenter.priceCalc(priceCalcData).subscribe(data => {
+      console.log(data, 'er');
+      if(data.Status == 'Success') {
+        this.priceResponse = data;
+      }
+      // this.shippingCharge = data.totalPrice;
+      // console.log(data, 'check this price response data');
+    });
   }
 
 }

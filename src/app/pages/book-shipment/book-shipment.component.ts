@@ -20,6 +20,9 @@ export class BookShipmentComponent implements OnInit {
     thridFormGroup: FormGroup;
     addForm: FormGroup;
     toppings = new FormControl();
+    totalVWeight:Number = 0;
+    totalWeight:Number = 0;
+    chargeableWeight:Number = 0;
     country: Country[] = [
         {value: 'india-0', viewValue: 'India'},
         {value: 'abudhabi-1', viewValue: 'Abudhabi'},
@@ -137,6 +140,29 @@ export class BookShipmentComponent implements OnInit {
     deleteRow(index: number) {
         this.formArr.removeAt(index)
     }
+
+    weight(val) {
+        // this.formArr.value.map(x => {
+        //     // this.totalWeight = Number(this.totalWeight) + Number(x.weight);
+        //     console.log(x.weight);
+        // })
+        this.totalWeight = Number(this.totalWeight) + Number(val);
+        this.chrgWeight();    
+    }
+
+    vWeight(val) {
+        this.totalVWeight = Number(this.totalVWeight) + Number(val);
+        this.chrgWeight();
+    }
+
+    chrgWeight() {
+        if(this.totalWeight > this.totalVWeight) {
+            this.chargeableWeight = this.totalWeight;
+        } else {
+            this.chargeableWeight = this.totalVWeight;
+        }
+    }
+
 
     nextTab(elem) {
         $(elem).next().find('a[data-toggle="tab"]').click();

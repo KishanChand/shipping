@@ -78,4 +78,10 @@ export class DataService {
     return this.http.get(baseUrl+'website/career_list', {headers: header});
   }
 
+  priceCalc(val) {
+    console.log(val, 'check our inputs')
+    let header = new HttpHeaders();
+    return this.http.post(baseUrl+'website/price_calculation', val, {headers: header});
+  }
+
 }

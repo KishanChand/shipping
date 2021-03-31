@@ -12,4 +12,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  serviceSec() {
+    var element = document.getElementById("gallery");
+    element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+  }
+
 }

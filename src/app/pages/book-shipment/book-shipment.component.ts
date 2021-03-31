@@ -22,6 +22,7 @@ export class BookShipmentComponent implements OnInit {
     toppings = new FormControl();
     totalVWeight:Number = 0;
     totalWeight:Number = 0;
+    totalAmount:Number = 0;
     chargeableWeight:Number = 0;
     country: Country[] = [
         {value: 'india-0', viewValue: 'India'},
@@ -109,7 +110,7 @@ export class BookShipmentComponent implements OnInit {
             length: [''],
             width: [''],
             height: [''],
-            volume: [''],
+            volume_width: [''],
             description: [''],
             itemDetails: [''],
             itemRows: this._formBuilder.array([this.initRows()])
@@ -127,9 +128,9 @@ export class BookShipmentComponent implements OnInit {
             length: [''],
             width: [''],
             height: [''],
-            volume: [''],
+            volume_width: [''],
             description: [''],
-            itemDetails: ['']
+            item_details: ['']
         });
     }
 
@@ -142,16 +143,30 @@ export class BookShipmentComponent implements OnInit {
     }
 
     weight(val) {
-        // this.formArr.value.map(x => {
-        //     // this.totalWeight = Number(this.totalWeight) + Number(x.weight);
-        //     console.log(x.weight);
-        // })
-        this.totalWeight = Number(this.totalWeight) + Number(val);
+        let xvalue = [];
+        this.formArr.value.map(x => {
+            if(x != '') {
+                xvalue.push(Number(x.weight));
+            }
+        });
+        let weight = xvalue.reduce(function (accumulator, current) {
+            return accumulator + current;
+        });
+        this.totalWeight = weight;
         this.chrgWeight();    
     }
 
     vWeight(val) {
-        this.totalVWeight = Number(this.totalVWeight) + Number(val);
+        let vValue = [];
+        this.formArr.value.map(x => {
+            if(x != '') {
+                vValue.push(Number(x.volume_width));
+            }
+        });
+        let vWeight = vValue.reduce(function (accumulator, current) {
+            return accumulator + current;
+        });
+        this.totalVWeight = vWeight;
         this.chrgWeight();
     }
 
@@ -161,6 +176,53 @@ export class BookShipmentComponent implements OnInit {
         } else {
             this.chargeableWeight = this.totalVWeight;
         }
+    }
+
+    createShipment() {
+        let createShipmentData = {
+            "id": '',
+            "shipment_date": this.firstFormGroup.value.dateCtrl,
+    "sender_consignor": this.firstFormGroup.value.consignorCtrl,
+    "sender_contact_person": this.firstFormGroup.value.contactPersonCtrl,
+    "sender_street_name_number": this.firstFormGroup.value.sender_street_name_number,
+    "sender_zip_code": this.firstFormGroup.value.sender_zip_code,
+    "sender_country": this.firstFormGroup.value.countryCtrl,
+    "sender_telephone": this.firstFormGroup.value.telephoneCtrl,
+    "sender_fax": this.firstFormGroup.value.faxCtrl,
+    "sender_email": this.firstFormGroup.value.emailCtrl,
+    "reference_number": this.firstFormGroup.value.refCtrl,
+    "receiver_company_name": this.firstFormGroup.value.companyCtrl,
+    "receiver_attention": this.firstFormGroup.value.attentionCtrl,
+    "receiver_street_name_number": this.firstFormGroup.value.rsnCtrl,
+    "receiver_city": this.firstFormGroup.value.cityCtrl,
+    "receiver_zip_code": this.firstFormGroup.value.rzipCtrl,
+    "receiver_country": this.firstFormGroup.value.rcountryCtrl,
+    "receiver_telephone": this.firstFormGroup.value.rtelephoneCtrl,
+    "receiver_mobile": this.firstFormGroup.value.mobileCtrl,
+    "receiver_fax": this.firstFormGroup.value.rfaxCtrl,
+    "receiver_email": this.firstFormGroup.value.remailCtrl,
+    "service": this.secondFormGroup.value.secondTabService,
+    "currency": this.secondFormGroup.value.secondTabCountry,
+    "type": this.secondFormGroup.value.secondTabType,
+    "value": this.secondFormGroup.value.secondTabVal,
+    "total_weight": this.totalWeight,
+    "total_volume_weight": this.totalVWeight,
+    "total_chargeable_weight": this.chargeableWeight,
+    "total_amount": this.totalAmount,
+    "collection_date": this.thridFormGroup.value.collectionDate,
+    "collection_ready_time": this.thridFormGroup.value.collectionTime,
+    "collection_close_time": this.thridFormGroup.value.collection_close_time,
+    "vehicle_type": this.thridFormGroup.value.vehicle_type,
+    "special_instruction": this.thridFormGroup.value.special_instruction,
+    "kyc_type": this.thridFormGroup.value.kyc_type,
+    "kyc_document": "",
+    "payment_type": this.thridFormGroup.value.cashType,
+    "shipment_items": this.formArr.value
+        }
+
+        this.dataRev.createShipmentApi(createShipmentData).subscribe(x => {
+            console.log(x);
+        });
     }
 
 

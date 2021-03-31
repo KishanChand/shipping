@@ -84,4 +84,9 @@ export class DataService {
     return this.http.post(baseUrl+'website/price_calculation', val, {headers: header});
   }
 
+  createShipmentApi(val) {
+    let header = new HttpHeaders();
+    return this.http.post(baseUrl+'website/create_shipment', val, {headers: header});
+  }
+
 }

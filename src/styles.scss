@@ -2680,6 +2680,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     padding-top: 4px;
   }
 }
+.navbar-expand-lg .navbar-nav .nav-link {
+  padding: 7px 15px;
+}
+.aboutSec {
+  border-left: 2px solid #ff4d4d;
+  padding-left: 30px;
+}
 @media(max-width: 767px) {
   #topbar {
     height: auto;
@@ -2692,5 +2699,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   }
   .innerTimeSec {
     display: block;
+  }
+  #main {
+    margin-top: -100px;
+  }
+}
+@media(max-width: 991px) {
+  .sliderContent {
+    padding: 60px 20px 200px 20px;
+    h1 {
+      margin-bottom: 100px;
+    }
   }
 }

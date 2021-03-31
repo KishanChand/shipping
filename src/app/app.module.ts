@@ -23,6 +23,8 @@ import { MaplocationComponent } from './pages/maplocation/maplocation.component'
 import { ContactusComponent } from './pages/contactus/contactus.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core'
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatButtonModule,
     HttpClientModule,
     MatRadioModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

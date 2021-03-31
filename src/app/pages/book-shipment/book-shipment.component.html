@@ -323,14 +323,16 @@
                         <form [formGroup]="firstFormGroup">
                             <ng-template matStepLabel></ng-template>
                             <div class="row mt-3">
-                                <div class="col-md-6">
+                                <div class="col-lg-6">
                                     <div class="white-bg shadow p-5 redBorder">
                                         <h6 class="mb-0 title-with-bg">Sender</h6>
                                         <div class="row">
                                             <div class="col-6">
-                                                <mat-form-field>
+                                                <mat-form-field appearance="legacy">
                                                     <mat-label>Date</mat-label>
-                                                    <input matInput placeholder="" formControlName="dateCtrl">
+                                                    <input matInput [matDatepicker]="picker" formControlName="dateCtrl">
+                                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                                    <mat-datepicker #picker></mat-datepicker>
                                                 </mat-form-field>
                                             </div>
                                             <div class="col-6">
@@ -348,7 +350,7 @@
                                             <div class="col-6">
                                                 <mat-form-field>
                                                     <mat-label>Street Name/Number</mat-label>
-                                                    <textarea matInput placeholder="" formControlName="snCtrl"></textarea>
+                                                    <input matInput placeholder="" formControlName="snCtrl">
                                                 </mat-form-field>
                                             </div>
                                             <div class="col-6">
@@ -395,7 +397,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-lg-6">
                                     <div class="white-bg shadow p-5 redBorder">
                                         <h6 class="mb-0 title-with-bg">Receiver</h6>
                                         <div class="row">
@@ -414,7 +416,7 @@
                                             <div class="col-6">
                                                 <mat-form-field>
                                                     <mat-label>Street Name/Number</mat-label>
-                                                    <textarea matInput placeholder="" formControlName="rsnCtrl"></textarea>
+                                                    <input matInput placeholder="" formControlName="rsnCtrl">
                                                 </mat-form-field>
                                             </div>
                                             <div class="col-6">
@@ -479,7 +481,7 @@
                                     <div class="white-bg shadow p-5 redBorder">
                                         <h6 class="mb-0 title-with-bg">Shipping Details</h6>
                                         <div class="row">                                    
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 col-lg-3">
                                                 <mat-form-field>
                                                     <mat-label>Service</mat-label>
                                                     <mat-select formControlName="secondTabService" required>
@@ -489,7 +491,7 @@
                                                     </mat-select>
                                                 </mat-form-field>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 col-lg-3">
                                                 <mat-form-field>
                                                     <mat-label>Country</mat-label>
                                                     <mat-select formControlName="secondTabCountry" required>
@@ -499,13 +501,13 @@
                                                     </mat-select>
                                                 </mat-form-field>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 col-lg-3">
                                                 <mat-form-field class="example-full-width">
                                                     <mat-label>Type</mat-label>
                                                     <input matInput placeholder="Type" formControlName="secondTabType" required>
                                                 </mat-form-field>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 col-lg-3">
                                                 <mat-form-field>
                                                     <mat-label>Value</mat-label>
                                                     <mat-select formControlName="secondTabVal" required>
@@ -571,7 +573,7 @@
                                                                     <td>
                                                                         <mat-form-field class="example-full-width">
                                                                             <mat-label>Volume</mat-label>
-                                                                            <input matInput placeholder="Volume" #vWeightFilled formControlName="volume" (change)="vWeight(vWeightFilled.value)">
+                                                                            <input matInput placeholder="Volume" #vWeightFilled formControlName="volume_width" (change)="vWeight(vWeightFilled.value)">
                                                                         </mat-form-field>
                                                                     </td>
                                                                     <td>
@@ -583,7 +585,7 @@
                                                                     <td>
                                                                         <mat-form-field class="example-full-width">
                                                                             <mat-label>Item Details</mat-label>
-                                                                            <input matInput placeholder="Item Details" formControlName="itemDetails">
+                                                                            <input matInput placeholder="Item Details" formControlName="item_details">
                                                                         </mat-form-field>
                                                                     </td>
                                                                     <td class="text-center">
@@ -627,7 +629,7 @@
                                                                     <td>
                                                                         <mat-form-field class="example-full-width">
                                                                             <mat-label>Total Amount</mat-label>
-                                                                            <input matInput placeholder="Total Amount" >
+                                                                            <input matInput placeholder="Total Amount" [value]="totalAmount">
                                                                         </mat-form-field>
                                                                     </td>
                                                                     <td></td>
@@ -664,9 +666,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <mat-form-field>
+                                                    <mat-form-field appearance="legacy">
                                                         <mat-label>Collection Ready Date</mat-label>
-                                                        <input matInput placeholder="" formControlName="collectionDate">
+                                                        <input matInput [matDatepicker]="picker2" formControlName="collectionDate">
+                                                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                                        <mat-datepicker #picker2></mat-datepicker>
                                                     </mat-form-field>
                                                 </div>
                                                 <div class="col-md-6">
@@ -734,7 +738,7 @@
                                 <div class="text-right mt-3">
                                     <button mat-raised-button matStepperPrevious class="mr-2">Back</button>
                                     <button mat-raised-button (click)="stepper.reset()" class="mr-2">Reset</button>
-                                    <button mat-raised-button color="warn" (click)="stepper.reset()">Submit</button>
+                                    <button mat-raised-button color="warn" (click)="createShipment()">Submit</button>
                                 </div>
                             </div>
                         </div>

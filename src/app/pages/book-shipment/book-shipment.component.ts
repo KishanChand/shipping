@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../.././data.service';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
+import { DatePipe } from '@angular/common';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 declare var $:any;
 interface Country {
@@ -14,6 +16,9 @@ interface Country {
 })
 export class BookShipmentComponent implements OnInit {
 
+    horizontalPosition: MatSnackBarHorizontalPosition = 'right';
+    verticalPosition: MatSnackBarVerticalPosition = 'top';
+
     isLinear = false;
     firstFormGroup: FormGroup;
     secondFormGroup: FormGroup;
@@ -24,13 +29,15 @@ export class BookShipmentComponent implements OnInit {
     totalWeight:Number = 0;
     totalAmount:Number = 0;
     chargeableWeight:Number = 0;
+    fileToUpload: any = "";
+    selectedFileName = "";
     country: Country[] = [
         {value: 'india-0', viewValue: 'India'},
         {value: 'abudhabi-1', viewValue: 'Abudhabi'},
         {value: 'dubai-2', viewValue: 'Dubai'}
     ];
 
-    constructor(private dataRev:DataService, private _formBuilder: FormBuilder) { }
+    constructor(private dataRev:DataService, private _snackBar:MatSnackBar, private _formBuilder: FormBuilder, public datePipe:DatePipe) { }
 
     ngOnInit() {
         window.scrollTo(0, 0);
@@ -110,7 +117,7 @@ export class BookShipmentComponent implements OnInit {
             length: [''],
             width: [''],
             height: [''],
-            volume_width: [''],
+            volume_weight: [''],
             description: [''],
             itemDetails: [''],
             itemRows: this._formBuilder.array([this.initRows()])
@@ -123,12 +130,12 @@ export class BookShipmentComponent implements OnInit {
 
     initRows() {
         return this._formBuilder.group({
-            no: [''],
+            // no: [''],
             weight: [''],
             length: [''],
             width: [''],
             height: [''],
-            volume_width: [''],
+            volume_weight: [''],
             description: [''],
             item_details: ['']
         });
@@ -160,7 +167,7 @@ export class BookShipmentComponent implements OnInit {
         let vValue = [];
         this.formArr.value.map(x => {
             if(x != '') {
-                vValue.push(Number(x.volume_width));
+                vValue.push(Number(x.volume_weight));
             }
         });
         let vWeight = vValue.reduce(function (accumulator, current) {
@@ -181,11 +188,11 @@ export class BookShipmentComponent implements OnInit {
     createShipment() {
         let createShipmentData = {
             "id": '',
-            "shipment_date": this.firstFormGroup.value.dateCtrl,
+            "shipment_date": this.datePipe.transform(this.firstFormGroup.value.dateCtrl, 'yyyy-MM-dd'),
     "sender_consignor": this.firstFormGroup.value.consignorCtrl,
     "sender_contact_person": this.firstFormGroup.value.contactPersonCtrl,
-    "sender_street_name_number": this.firstFormGroup.value.sender_street_name_number,
-    "sender_zip_code": this.firstFormGroup.value.sender_zip_code,
+    "sender_street_name_number": this.firstFormGroup.value.snCtrl,
+    "sender_zip_code": this.firstFormGroup.value.zipCtrl,
     "sender_country": this.firstFormGroup.value.countryCtrl,
     "sender_telephone": this.firstFormGroup.value.telephoneCtrl,
     "sender_fax": this.firstFormGroup.value.faxCtrl,
@@ -209,21 +216,28 @@ export class BookShipmentComponent implements OnInit {
     "total_volume_weight": this.totalVWeight,
     "total_chargeable_weight": this.chargeableWeight,
     "total_amount": this.totalAmount,
-    "collection_date": this.thridFormGroup.value.collectionDate,
+    "collection_date": this.datePipe.transform(this.thridFormGroup.value.collectionDate, 'yyyy-MM-dd'),
     "collection_ready_time": this.thridFormGroup.value.collectionTime,
-    "collection_close_time": this.thridFormGroup.value.collection_close_time,
-    "vehicle_type": this.thridFormGroup.value.vehicle_type,
-    "special_instruction": this.thridFormGroup.value.special_instruction,
-    "kyc_type": this.thridFormGroup.value.kyc_type,
-    "kyc_document": "",
+    "collection_close_time": this.thridFormGroup.value.cutoffTime,
+    "vehicle_type": this.thridFormGroup.value.vehicleType,
+    "special_instruction": this.thridFormGroup.value.specilInst,
+    "kyc_type": this.thridFormGroup.value.kycType,
+    "kyc_document": this.fileToUpload,
     "payment_type": this.thridFormGroup.value.cashType,
     "shipment_items": this.formArr.value
         }
 
-        this.dataRev.createShipmentApi(createShipmentData).subscribe(x => {
+        this.dataRev.createShipmentApi(createShipmentData).subscribe((x:any) => {
             console.log(x);
+            this._snackBar.open(x.Message, 'Close', {
+                duration: 5*1000,
+                horizontalPosition: this.horizontalPosition,
+                verticalPosition: this.verticalPosition,
+            });
         });
     }
+
+    
 
 
     nextTab(elem) {
@@ -231,6 +245,14 @@ export class BookShipmentComponent implements OnInit {
     }
     prevTab(elem) {
         $(elem).prev().find('a[data-toggle="tab"]').click();
+    }
+
+    handleFileInput(files: FileList) {
+        this.fileToUpload = files.item(0);
+        this.selectedFileName = this.fileToUpload.name;
+        if(this.fileToUpload == null || this.fileToUpload == undefined) {
+            this.fileToUpload = "";
+        }
     }
 
 }

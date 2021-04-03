@@ -573,7 +573,7 @@
                                                                     <td>
                                                                         <mat-form-field class="example-full-width">
                                                                             <mat-label>Volume</mat-label>
-                                                                            <input matInput placeholder="Volume" #vWeightFilled formControlName="volume_width" (change)="vWeight(vWeightFilled.value)">
+                                                                            <input matInput placeholder="Volume" #vWeightFilled formControlName="volume_weight" (change)="vWeight(vWeightFilled.value)">
                                                                         </mat-form-field>
                                                                     </td>
                                                                     <td>
@@ -730,6 +730,12 @@
                                                         <mat-label>KYC Documents</mat-label>
                                                         <input matInput type="file" (change)="selectFile($event)" />
                                                     </mat-form-field> -->
+                                                    <p class="mb-3">KYC Documents</p>
+                                                    <div class="form-group fileUploadSec">
+                                                        <input type="file" id="upload" (change)="handleFileInput($event.target.files)" hidden/>
+                                                        <label for="upload">Choose file</label>
+                                                        <b class="ml-2">{{selectedFileName}}</b>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </form>

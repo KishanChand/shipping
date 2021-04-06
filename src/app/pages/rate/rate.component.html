@@ -8,7 +8,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">From Country <span>*</span></label>
-                                <select class="form-control" formControlName="fromCountry" (change)="destinationCountry($event)" name="fromCountries">
+                                <select class="form-control" id="fCntry" formControlName="fromCountry" (change)="destinationCountry($event)" name="fromCountries">
                                   <option value="">Select Country</option>
                                   <option *ngFor="let f of fromCountries" id="f.country_id"  value="{{f.country_id}}">{{f.country_name}}</option>
                                 </select>
@@ -17,7 +17,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">To Country<span>*</span></label>
-                                <select class="form-control" formControlName="toCountry" name="toCountry">
+                                <select class="form-control" id="tCntry" formControlName="toCountry" name="toCountry" (change)="selctedDestinationCntry($event)">
                                   <option value="">Select Country</option>
                                   <option *ngFor="let t of toCountries" id="t.country_id" value="{{t.country_id}}">{{t.country_name}}</option>
                                 </select>
@@ -72,12 +72,12 @@
                                         KG
                                     </label>
                                 </div>
-                                <div class="form-check mr-3">
+                                <!-- <div class="form-check mr-3">
                                     <input class="form-check-input" type="radio" name="unit" formControlName="unit" id="exampleRadios2" value="LBS">
                                     <label class="form-check-label" for="exampleRadios2">
                                         LBS
                                     </label>
-                                </div>
+                                </div> -->
                                 <button class="btn btn-warning ml-2">Check Rate</button>
                             </div>
                         </div>
@@ -86,7 +86,7 @@
                 <div class="rateSection white-bg shadow p-5">
                     <div class="row">
                         <div class="col-12">
-                            <p style="font-size: 24px; color:#ffc107;" class="text-center"><span>Saudi Arabia</span><span style="color: #333;"><i class="fas fa-long-arrow-alt-right mx-3"></i></span><span>United States Of America</span></p>
+                            <p style="font-size: 24px; color:#ffc107;" class="text-center"><span>{{selFromCntry}}</span><span style="color: #333;"><i class="fas fa-long-arrow-alt-right mx-3"></i></span><span>{{selToCntry}}</span></p>
                         </div>
 
                         <div class="col-12">
@@ -152,7 +152,7 @@
                         </table>
                     </div>
                     <div class="text-right">
-                        <button class="btn btn-warning">Proceed</button>
+                        <button class="btn btn-warning" routerLink="book-shipment">Proceed</button>
                     </div>
                 </div>
             </div>

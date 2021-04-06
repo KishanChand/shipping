@@ -54,7 +54,7 @@ export class DataService {
     let header = new HttpHeaders();
     header.append('Content-Type', 'application/json');
 
-    return this.http.get(baseUrl+'website/our_service_list', {headers: header});
+    return this.http.get(baseUrl+'website/news_list', {headers: header});
   }
 
   newsList() {

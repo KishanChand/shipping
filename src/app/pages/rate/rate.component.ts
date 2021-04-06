@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from '../../data.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
@@ -12,6 +12,8 @@ export class RateComponent implements OnInit {
   fromCountries:any = [];
   toCountries:any = [];
   collectRateDetails = ''; 
+  selFromCntry = 'From Country';
+  selToCntry = 'To Country';
   priceResponse:any = {
     "totalPrice": 0,
     "vatPercentage": 0,
@@ -34,12 +36,25 @@ export class RateComponent implements OnInit {
         this.rateCalc.patchValue(x);
       }
     });
+
+    this.dataCenter.ourServiceList().subscribe(x => {
+      console.log(x, 'w2212');
+    });
   }
 
   originCountryList() {
     this.dataCenter.originCountryList().subscribe((response: any) => {
       if(response.Status == "Success") {
         this.fromCountries = response.countryList;
+        this.dataCenter.rateDetails$.subscribe(x => {
+          if(x != null && x != undefined && x != '') {
+            this.fromCountries.forEach(element => {
+              if(Number(x.fromCountry) == element.country_id) {
+                this.selFromCntry = element.country_name;
+              }
+            });
+          }
+        });
       } else {
         this.fromCountries = [];
       }
@@ -47,16 +62,33 @@ export class RateComponent implements OnInit {
   }
 
   destinationCountry(event) {
-    let originCountryId
+    let originCountryId;
     if(event.target == undefined) {
       originCountryId = event;
     } else {
-      originCountryId = event.target.value
+      originCountryId = event.target.value;
+      this.selFromCntry = event.target.options[event.target.options.selectedIndex].text;
     }
     if(originCountryId != "") {
       this.dataCenter.destinationCountryList(originCountryId).subscribe((response: any) => {
         if(response.Status == "Success") {
           this.toCountries = response.countryList;
+          this.dataCenter.rateDetails$.subscribe(x => {
+            if(x != null && x != undefined && x != '') {
+              if(event.target == undefined) {
+                this.fromCountries.forEach(element => {
+                  if(Number(x.fromCountry) == element.country_id) {
+                    this.selFromCntry = element.country_name;
+                  }
+                });
+              }
+              this.toCountries.forEach(element => {
+                if(Number(x.toCountry) == element.country_id) {
+                  this.selToCntry = element.country_name;
+                }
+              });
+            }
+          });
         } else {
           this.toCountries = [];
         }
@@ -64,6 +96,10 @@ export class RateComponent implements OnInit {
     } else {
       this.toCountries = [];
     }
+  }
+
+  selctedDestinationCntry(event) {
+    this.selToCntry = event.target.options[event.target.options.selectedIndex].text;
   }
 
   rateCalc = new FormGroup({
@@ -86,7 +122,6 @@ export class RateComponent implements OnInit {
       "unit": this.rateCalc.value.unit
     }
     this.dataCenter.priceCalc(priceCalcData).subscribe((data: any) => {
-      console.log(data, 'er');
       if(data.Status == 'Success') {
         this.priceResponse = data;
       } else {
@@ -98,7 +133,6 @@ export class RateComponent implements OnInit {
         }        
       }
       // this.shippingCharge = data.totalPrice;
-      // console.log(data, 'check this price response data');
     });
   }
 

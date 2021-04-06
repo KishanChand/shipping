@@ -59,7 +59,9 @@
                                 <textarea matInput placeholder="Message" formControlName="Message"></textarea>
                                 <span class="error" *ngIf="Message.invalid && Message.touched">Please Enter Message</span>
                             </mat-form-field>
-                            <button mat-raised-button color="warn" [disabled]="contact.invalid">Send Message</button>
+                            <div class="text-right">
+                                <button mat-raised-button color="warn" [disabled]="contact.invalid">Send Message</button>
+                            </div>
                         </form>
                     </div>
                 </div>

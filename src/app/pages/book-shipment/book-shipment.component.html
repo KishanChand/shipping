@@ -665,7 +665,7 @@
                                                         <b class="mr-2">Note:</b>Shipments booked on Friday will be processed on next working day.
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <mat-form-field appearance="legacy">
                                                         <mat-label>Collection Ready Date</mat-label>
                                                         <input matInput [matDatepicker]="picker2" formControlName="collectionDate">
@@ -673,7 +673,7 @@
                                                         <mat-datepicker #picker2></mat-datepicker>
                                                     </mat-form-field>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <mat-form-field>
                                                         <mat-label>Collection Ready Time</mat-label>
                                                         <mat-select formControlName="collectionTime">
@@ -683,7 +683,7 @@
                                                         </mat-select>
                                                     </mat-form-field>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <mat-form-field>
                                                         <mat-label>Collection Cutoff/Closing Time</mat-label>
                                                         <mat-select formControlName="cutoffTime">
@@ -693,7 +693,7 @@
                                                         </mat-select>
                                                     </mat-form-field>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <mat-form-field>
                                                         <mat-label>Vehicle Type</mat-label>
                                                         <mat-select formControlName="vehicleType">
@@ -703,7 +703,7 @@
                                                         </mat-select>
                                                     </mat-form-field>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <mat-form-field>
                                                         <mat-label>KYC Type</mat-label>
                                                         <mat-select formControlName="kycType">
@@ -713,29 +713,29 @@
                                                         </mat-select>
                                                     </mat-form-field>
                                                 </div>
-                                                <div class="col-md-6 pt-4">
-                                                    <mat-radio-group aria-label="Select an option" formControlName="cashType">
-                                                        <mat-radio-button color="warn" value="cash">Pay Cash</mat-radio-button>
-                                                        <mat-radio-button color="warn" value="online">Pay Online</mat-radio-button>
-                                                    </mat-radio-group>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <mat-form-field>
-                                                        <mat-label>Special Instruction</mat-label>
-                                                        <textarea matInput placeholder="" formControlName="specilInst"></textarea>
-                                                    </mat-form-field>
-                                                </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <!-- <mat-form-field>
                                                         <mat-label>KYC Documents</mat-label>
                                                         <input matInput type="file" (change)="selectFile($event)" />
                                                     </mat-form-field> -->
-                                                    <p class="mb-3">KYC Documents</p>
+                                                    <p class="mb-1">KYC Documents</p>
                                                     <div class="form-group fileUploadSec">
                                                         <input type="file" id="upload" (change)="handleFileInput($event.target.files)" hidden/>
                                                         <label for="upload">Choose file</label>
                                                         <b class="ml-2">{{selectedFileName}}</b>
                                                     </div>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <mat-form-field>
+                                                        <mat-label>Special Instruction</mat-label>
+                                                        <textarea matInput placeholder="" formControlName="specilInst"></textarea>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-md-4 pt-4">
+                                                    <mat-radio-group aria-label="Select an option" formControlName="cashType">
+                                                        <mat-radio-button color="warn" value="cash">Pay Cash</mat-radio-button>
+                                                        <mat-radio-button color="warn" value="online">Pay Online</mat-radio-button>
+                                                    </mat-radio-group>
                                                 </div>
                                             </div>
                                         </form>

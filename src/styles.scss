@@ -1842,7 +1842,8 @@ body {
   }
   
   #footer .copyright {
-    text-align: center;
+    // text-align: center;
+    color: #ccc;
     padding-top: 10px;
   }
   
@@ -2721,6 +2722,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
       }
     }
   }
+}
+.connectSoft {
+  font-weight: 500;
+  float: right;
+}
+.headerDesc {
+  background-color: rgba(0,0,0,0.3);
+  padding: 30px;
+  border-radius: 5px;
+  width: 70%;
+  display: inline-block;
+  margin: 20px auto 10px auto;
+  font-size: 18px;
 }
 @media(max-width: 767px) {
   #topbar {

@@ -14,6 +14,10 @@ const httpHeaders = new HttpHeaders({
 export class DataService {
   private rateDetails = new BehaviorSubject<any>('');
   public rateDetails$ = this.rateDetails.asObservable();
+
+  private serviceDetailId = new BehaviorSubject<any>('');
+  public serviceDetailId$ = this.serviceDetailId.asObservable();
+
   constructor(private http: HttpClient) { }
 
   getRateDetails(val) {
@@ -54,7 +58,7 @@ export class DataService {
     let header = new HttpHeaders();
     header.append('Content-Type', 'application/json');
 
-    return this.http.get(baseUrl+'website/news_list', {headers: header});
+    return this.http.get(baseUrl+'website/our_service_list', {headers: header});
   }
 
   newsList() {
@@ -87,6 +91,21 @@ export class DataService {
   createShipmentApi(val) {
     let header = new HttpHeaders();
     return this.http.post(baseUrl+'website/create_shipment', val, {headers: header});
+  }
+
+  serviceDetailPage(id) {
+    this.serviceDetailId.next(id);
+  }
+
+  detailService(id) {
+    let data = {
+      service_id: id
+    }
+
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+
+    return this.http.post(baseUrl+`website/our_service_details`, data, {headers: header});
   }
 
 }

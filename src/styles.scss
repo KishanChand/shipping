@@ -2736,6 +2736,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin: 20px auto 10px auto;
   font-size: 18px;
 }
+.galleryImgs {
+  height: 259px;
+}
+.shrtDescriptionSec {
+  height: 48px;
+  overflow: hidden;
+}
 @media(max-width: 767px) {
   #topbar {
     height: auto;
@@ -2759,5 +2766,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     h1 {
       margin-bottom: 100px;
     }
+  }
+  .galleryImgs {
+    width: 100%;
+    height: auto;
   }
 }

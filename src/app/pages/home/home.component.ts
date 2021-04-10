@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../.././data.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -11,7 +11,7 @@ declare var $:any;
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
   fromCountries:any = [];
   toCountries:any;
   fromCities:any = [];
@@ -58,16 +58,39 @@ export class HomeComponent implements OnInit {
     this.dataCenter.ourServiceList().subscribe((response: any) => {
       if(response.Status == "Success") {
         this.ourService = response.ourServiceList;
+        setTimeout( ()=>{
+          $('.slider-container').slick({
+            dots: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 2,
+            adaptiveHeight: true,
+            responsive: [
+              {
+                breakpoint: 768,
+                settings: {
+                  slidesToShow: 1,
+                }
+              }
+            ]
+          });
+        }, 1000);
       } else {
         this.ourService = [];
       }
     });
   }
 
+  serviceDetail(val) {
+    this.dataCenter.serviceDetailPage(val);
+    this.router.navigate([ `/service-details` ]);
+  }
+
   newsList() {
     this.dataCenter.newsList().subscribe((response: any) => {
       if(response.Status == "Success") {
         this.allNews = response.newsList;
+        console.log(this.allNews, '+++');
       } else {
         this.allNews = [];
       }
@@ -98,21 +121,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngAfterViewInit(){
-    $('.slider-container').slick({
-      dots: true,
-      infinite: true,
-      speed: 300,
-      slidesToShow: 2,
-      adaptiveHeight: true,
-      responsive: [
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 1,
-          }
-        }
-      ]
-    });
+    
   }
 
   domesticForm = new FormGroup({

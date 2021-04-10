@@ -284,7 +284,7 @@
 
       <div class="container-fluid aos-init aos-animate" data-aos="fade-up">
 
-        <div class="row no-gutters">
+        <!-- <div class="row no-gutters">
 
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item ">
@@ -356,8 +356,33 @@
             </div>
           </div>
 
-        </div>
+        </div> -->
 
+        <div class="row no-gutters">
+
+          <div class="col-lg-6" *ngFor="let item of ourService">
+            <div class="row no-gutters">
+              <div class="col-lg-6">
+                <div class="gallery-item ">
+                  <a href="{{item.service_image}}" class="venobox vbox-item" data-gall="gallery-item">
+                    <img src="{{item.service_image}}" alt="" class="img-fluid galleryImgs">
+                  </a>
+                </div>
+              </div>
+
+              <div class="col-lg-6">
+                <div class="gallery-item text-center text-card white-bg">
+                  <img src="{{item.service_icon}}" alt="" class="icon">
+                  <h1 class="service-title">{{item.service_name}}</h1>
+                  <p class="shrtDescriptionSec">{{item.short_description}}</p>
+                  <button href="javascript:void(0);" mat-button color="warn" (click)="serviceDetail(item.id)">READ MORE</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
       </div>
     </section>
 
@@ -420,7 +445,16 @@
         </div>
 
         <div class="slider-container">
-          <div class="slide-item">
+          <div class="slide-item" *ngFor="let item of allNews">
+            <div class="news-card">
+                <div class="header">
+                  <h1 class="title">{{item.news_title}}</h1>
+                  <span class="date">{{item.news_date}}</span>
+                </div>
+                <p>{{item.short_news}}</p>
+            </div>
+          </div>
+          <!-- <div class="slide-item">
             <div class="news-card">
                 <div class="header">
                   <h1 class="title">News Title</h1>
@@ -455,7 +489,7 @@
                 </div>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem aliquam quo voluptatem distinctio sed in porro laborum corrupti quibusdam ut suscipit reprehenderit quisquam repellendus provident perferendis, ex at ipsam veniam.</p>
               </div>
-          </div>
+          </div> -->
           
         </div>
        

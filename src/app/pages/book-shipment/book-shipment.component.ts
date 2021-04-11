@@ -185,6 +185,11 @@ export class BookShipmentComponent implements OnInit {
         }
     }
 
+    volWegt(rIndex) {
+        let test = (this.addForm.value.itemRows[rIndex].length * this.addForm.value.itemRows[rIndex].width * this.addForm.value.itemRows[rIndex].height)/5000;
+        ((this.addForm.get('itemRows') as FormArray).at(rIndex) as FormGroup).get('volume_weight').patchValue(test);
+    }
+
     createShipment() {
         let createShipmentData = {
             "id": '',

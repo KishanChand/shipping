@@ -573,7 +573,7 @@
                                                                     <td>
                                                                         <mat-form-field class="example-full-width">
                                                                             <mat-label>Volume</mat-label>
-                                                                            <input matInput placeholder="Volume" #vWeightFilled formControlName="volume_weight" (change)="vWeight(vWeightFilled.value)">
+                                                                            <input matInput placeholder="Volume" #vWeightFilled formControlName="volume_weight" (blur)="vWeight(vWeightFilled.value)" (focus)="volWegt(i)" id="rowField_{{i}}">
                                                                         </mat-form-field>
                                                                     </td>
                                                                     <td>

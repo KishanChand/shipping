@@ -4,5 +4,5 @@ import { Injectable } from '@angular/core';
 
 export class Config {}
 
-export const baseUrl ='http://localhost/skynet-india/api/';
-//export const baseUrl ='http://agsconcreteartdesigns.in/skynet-india/api/';
+// export const baseUrl ='http://localhost/skynet-india/api/';
+export const baseUrl ='http://agsconcreteartdesigns.in/skynet-india/api/';

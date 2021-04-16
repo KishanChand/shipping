@@ -2743,6 +2743,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   height: 48px;
   overflow: hidden;
 }
+.smallHeading {
+  background-color: #f74c4c;
+  padding: 5px 10px;
+  text-transform: uppercase;
+  color: #ffff;
+  display: inline-block;
+  font-size: 12px;
+  border-radius: 5px;
+}
 @media(max-width: 767px) {
   #topbar {
     height: auto;

@@ -29,6 +29,7 @@ export class BookShipmentComponent implements OnInit {
     totalWeight:Number = 0;
     totalAmount:Number = 0;
     chargeableWeight:Number = 0;
+    totalPieces:Number = 1;
     fileToUpload: any = "";
     selectedFileName = "";
     country: Country[] = [
@@ -36,6 +37,21 @@ export class BookShipmentComponent implements OnInit {
         {value: 'abudhabi-1', viewValue: 'Abudhabi'},
         {value: 'dubai-2', viewValue: 'Dubai'}
     ];
+    currency = [
+        {value:'inr', viewValue:'inr'},
+        {value:'dirhams', viewValue:'dirhams'},
+        {value:'dollar', viewValue:'dollar'}
+    ];
+    vehicleType = [
+        {value:'van', viewValue:'Van (heavy weight vehicle)'},
+        {value:'bike', viewValue:'Bike (light weight vehicle)'}
+    ];
+    kycType = [
+        {value:'voterid', viewValue:'Voter Id'},
+        {value:'aadharcard', viewValue:'Aadhar Card'},
+        {value:'pancard', viewValue:'Pan Card'}
+    ]
+
 
     constructor(private dataRev:DataService, private _snackBar:MatSnackBar, private _formBuilder: FormBuilder, public datePipe:DatePipe) { }
 
@@ -97,9 +113,10 @@ export class BookShipmentComponent implements OnInit {
         });
         this.secondFormGroup = this._formBuilder.group({
             secondTabService: ['', Validators.required],
-            secondTabCountry: ['', Validators.required],
+            secondTabCurrency: ['', Validators.required],
             secondTabType: ['', Validators.required],
             secondTabVal: ['', Validators.required],
+            secondTabContent: ['', Validators.required],
             totalPiece: ['', Validators.required]
         });
         this.thridFormGroup = this._formBuilder.group({
@@ -109,6 +126,7 @@ export class BookShipmentComponent implements OnInit {
             vehicleType: [''],
             specilInst: [''],
             kycType: [''],
+            shipmentType: [''],
             cashType: ['']
         });
         this.addForm = this._formBuilder.group({
@@ -143,10 +161,12 @@ export class BookShipmentComponent implements OnInit {
 
     addNewRow() {
         this.formArr.push(this.initRows());
+        this.totalPieces = this.formArr.length;
     }
 
     deleteRow(index: number) {
         this.formArr.removeAt(index)
+        this.totalPieces = this.formArr.length;
     }
 
     weight(val) {
@@ -214,9 +234,11 @@ export class BookShipmentComponent implements OnInit {
     "receiver_fax": this.firstFormGroup.value.rfaxCtrl,
     "receiver_email": this.firstFormGroup.value.remailCtrl,
     "service": this.secondFormGroup.value.secondTabService,
-    "currency": this.secondFormGroup.value.secondTabCountry,
+    "currency": this.secondFormGroup.value.secondTabCurrency,
     "type": this.secondFormGroup.value.secondTabType,
     "value": this.secondFormGroup.value.secondTabVal,
+    "content": this.secondFormGroup.value.secondTabContent,
+    "total_pieces": this.totalPieces,
     "total_weight": this.totalWeight,
     "total_volume_weight": this.totalVWeight,
     "total_chargeable_weight": this.chargeableWeight,
@@ -228,6 +250,7 @@ export class BookShipmentComponent implements OnInit {
     "special_instruction": this.thridFormGroup.value.specilInst,
     "kyc_type": this.thridFormGroup.value.kycType,
     "kyc_document": this.fileToUpload,
+    "shipment_type": this.thridFormGroup.value.shipmentType,
     "payment_type": this.thridFormGroup.value.cashType,
     "shipment_items": this.formArr.value
         }
@@ -240,6 +263,12 @@ export class BookShipmentComponent implements OnInit {
                 verticalPosition: this.verticalPosition,
             });
         });
+    }
+
+    docType(e) {
+        if(e == 'docs') {
+            this.secondFormGroup.controls['secondTabContent'].setValue('document');
+        }
     }
 
     

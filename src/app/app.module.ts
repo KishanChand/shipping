@@ -27,6 +27,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DatePipe } from '@angular/common';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
@@ -60,6 +61,7 @@ import { AgmCoreModule } from '@agm/core';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSnackBarModule,
+    MatCheckboxModule,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY_GOES_HERE'
     })

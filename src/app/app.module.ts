@@ -63,7 +63,7 @@ import { AgmCoreModule } from '@agm/core';
     MatSnackBarModule,
     MatCheckboxModule,
     AgmCoreModule.forRoot({
-      apiKey: 'YOUR_GOOGLE_MAPS_API_KEY_GOES_HERE'
+      apiKey: ''
     })
   ],
   providers: [DatePipe],

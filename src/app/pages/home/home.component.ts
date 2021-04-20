@@ -12,6 +12,8 @@ declare var $:any;
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, AfterViewInit {
+  lat = 9.94623649415065;
+  lng = 78.10771437774557;
   fromCountries:any = [];
   toCountries:any;
   fromCities:any = [];
